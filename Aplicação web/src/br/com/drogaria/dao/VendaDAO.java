@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
 import br.com.drogaria.domain.Venda;
 import br.com.drogaria.util.HibernateUtil;
 
@@ -49,7 +50,7 @@ public class VendaDAO {
 		Venda venda = null;
 
 		try {
-			Query consulta = sessao.getNamedQuery("Produto.buscarPorCodigo");
+			Query consulta = sessao.getNamedQuery("Venda.buscarPorCodigo");
 			consulta.setLong("codigo", codigo);
 
 			venda = (Venda) consulta.uniqueResult();

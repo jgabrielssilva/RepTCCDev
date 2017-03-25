@@ -3,14 +3,14 @@ package br.com.drogaria.test;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-
 import org.junit.Ignore;
 import org.junit.Test;
 
+import br.com.drogaria.domain.Funcionario;
 import br.com.drogaria.dao.FuncionarioDAO;
 import br.com.drogaria.dao.VendaDAO;
-import br.com.drogaria.domain.Funcionario;
 import br.com.drogaria.domain.Venda;
+
 
 public class VendaDAOTest {
 
@@ -18,12 +18,12 @@ public class VendaDAOTest {
 	@Ignore
 	public void salvar() {
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-		Funcionario funcionario = funcionarioDAO.buscarPorCodigo(1L);
+		Funcionario funcionario = funcionarioDAO.buscarPorCodigo(5L);
 
 		Venda venda = new Venda();
 		venda.setFuncionario(funcionario);
 		venda.setHorario(new Date());
-		venda.setValor(new BigDecimal(550.55D));
+		venda.setValor(new BigDecimal(3000.30D));
 
 		VendaDAO vendaDAO = new VendaDAO();
 		vendaDAO.salvar(venda);
@@ -42,7 +42,7 @@ public class VendaDAOTest {
 	@Ignore
 	public void buscarPorCodigo() {
 		VendaDAO vendaDAO = new VendaDAO();
-		Venda venda = vendaDAO.buscarPorCodigo(1L);
+		Venda venda = vendaDAO.buscarPorCodigo(4L);
 
 		System.out.println(venda);
 	}
@@ -51,7 +51,7 @@ public class VendaDAOTest {
 	@Ignore
 	public void excluir() {
 		VendaDAO vendaDAO = new VendaDAO();
-		Venda venda = vendaDAO.buscarPorCodigo(1L);
+		Venda venda = vendaDAO.buscarPorCodigo(7L);
 
 		vendaDAO.excluir(venda);
 	}
@@ -60,13 +60,13 @@ public class VendaDAOTest {
 	@Ignore
 	public void editar() {
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-		Funcionario funcionario = funcionarioDAO.buscarPorCodigo(1L);
+		Funcionario funcionario = funcionarioDAO.buscarPorCodigo(5L);
 
 		VendaDAO vendaDAO = new VendaDAO();
-		Venda venda = vendaDAO.buscarPorCodigo(2L);
+		Venda venda = vendaDAO.buscarPorCodigo(8L);
 
 		venda.setHorario(new Date());
-		venda.setValor(new BigDecimal(321.24D));
+		venda.setValor(new BigDecimal(2799.99D));
 		venda.setFuncionario(funcionario);
 
 		vendaDAO.editar(venda);
