@@ -10,18 +10,19 @@ import br.com.drogaria.dao.FabricanteDAO;
 import br.com.drogaria.dao.ProdutoDAO;
 import br.com.drogaria.domain.Produto;
 
+
 public class ProdutoDAOTest {
 
 	@Test
 	@Ignore
 	public void salvar() {
 		FabricanteDAO fabricanteDAO = new FabricanteDAO();
-		Fabricante fabricante = fabricanteDAO.buscarPorCodigo(6L);
+		Fabricante fabricante = fabricanteDAO.buscarPorCodigo(11L);
 
 		Produto produto = new Produto();
-		produto.setDescricao("DESCRICAOY");
-		produto.setPreco(new BigDecimal(17.63D));
-		produto.setQuantidade(3);
+		produto.setDescricao("Mac");
+		produto.setPreco(new BigDecimal(5000.99D));
+		produto.setQuantidade(2);
 		produto.setFabricante(fabricante);
 
 		ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -32,7 +33,7 @@ public class ProdutoDAOTest {
 	@Ignore
 	public void buscarPorCodigo() {
 		ProdutoDAO produtoDAO = new ProdutoDAO();
-		Produto produto = produtoDAO.buscarPorCodigo(1L);
+		Produto produto = produtoDAO.buscarPorCodigo(3L);
 
 		System.out.println(produto);
 	}
@@ -50,7 +51,7 @@ public class ProdutoDAOTest {
 	@Ignore
 	public void excluir() {
 		ProdutoDAO produtoDAO = new ProdutoDAO();
-		Produto produto = produtoDAO.buscarPorCodigo(2L);
+		Produto produto = produtoDAO.buscarPorCodigo(6L);
 
 		produtoDAO.excluir(produto);
 	}
@@ -60,14 +61,14 @@ public class ProdutoDAOTest {
 	public void editar() {
 		ProdutoDAO produtoDAO = new ProdutoDAO();
 
-		Produto produto = produtoDAO.buscarPorCodigo(1L);
+		Produto produto = produtoDAO.buscarPorCodigo(4L);
 
-		produto.setDescricao("DESCRICAO A");
-		produto.setPreco(new BigDecimal(6.37D));
-		produto.setQuantidade(9);
+		produto.setDescricao("TV");
+		produto.setPreco(new BigDecimal(3000.30D));
+		produto.setQuantidade(22);
 
 		FabricanteDAO fabricanteDAO = new FabricanteDAO();
-		Fabricante fabricante = fabricanteDAO.buscarPorCodigo(1L);
+		Fabricante fabricante = fabricanteDAO.buscarPorCodigo(9L);
 		produto.setFabricante(fabricante);
 
 		produtoDAO.editar(produto);
