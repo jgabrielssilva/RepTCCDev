@@ -12,15 +12,19 @@ public class FabricanteDAOTest {
 	@Ignore
 	public void salvar(){
 		
-		Fabricante fab3 = new Fabricante();
-		fab3.setDescricao("DESCC");
+		Fabricante fab1 = new Fabricante();
+		fab1.setDescricao("LENOVO");
 		
-		Fabricante fab4 = new Fabricante();
-		fab4.setDescricao("DESCD");
+		Fabricante fab2 = new Fabricante();
+		fab2.setDescricao("SONY");
+		
+		Fabricante fab3 = new Fabricante();
+		fab3.setDescricao("INTEL");
 			
 		FabricanteDAO dao = new FabricanteDAO();
+		dao.salvar(fab1);
+		dao.salvar(fab2);
 		dao.salvar(fab3);
-		dao.salvar(fab4);
 	}
 		
 	@Test
@@ -38,18 +42,18 @@ public class FabricanteDAOTest {
 	public void buscarPorCodigo() {
 		FabricanteDAO dao = new FabricanteDAO();
 
-		Fabricante fab1 = dao.buscarPorCodigo(3L);
-		Fabricante fab2 = dao.buscarPorCodigo(7L);
+		Fabricante fab1 = dao.buscarPorCodigo(9L);
+
 
 		System.out.println(fab1);
-		System.out.println(fab2);
+
 	}
 
 	@Test
 	@Ignore
 	public void excluir() {
 		FabricanteDAO dao = new FabricanteDAO();
-		Fabricante fab = dao.buscarPorCodigo(5L);
+		Fabricante fab = dao.buscarPorCodigo(14L);
 
 		dao.excluir(fab);
 	}
@@ -58,8 +62,8 @@ public class FabricanteDAOTest {
 	@Ignore
 	public void editar() {
 		FabricanteDAO dao = new FabricanteDAO();
-		Fabricante fab = dao.buscarPorCodigo(6L);
-		fab.setDescricao("DESCC");
+		Fabricante fab = dao.buscarPorCodigo(12L);
+		fab.setDescricao("MOTOROLA");
 		
 		dao.editar(fab);
 	}
