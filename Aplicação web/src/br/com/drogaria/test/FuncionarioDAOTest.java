@@ -13,15 +13,17 @@ public class FuncionarioDAOTest {
 	@Ignore
 	public void salvar() {
 
-		Funcionario fun = new Funcionario();
-		fun.setCpf("222.222.222-22");
-		fun.setFuncao("ADMINISTRADORA");
-		fun.setNome("BRUNA SILVA");
-		fun.setSenha("fdg8888549489te");
+		Funcionario fun1 = new Funcionario();
+		fun1.setCpf("339.553.113-83");
+		fun1.setFuncao("MOTORISTA");
+		fun1.setNome("JOSE CARLOS");
+		fun1.setSenha("en9888888");
+		
 
 		FuncionarioDAO dao = new FuncionarioDAO();
 
-		dao.salvar(fun);
+		dao.salvar(fun1);
+
 	}
 
 	@Test
@@ -39,16 +41,18 @@ public class FuncionarioDAOTest {
 	public void buscarPorCodigo() {
 		FuncionarioDAO dao = new FuncionarioDAO();
 
-		Funcionario fun = dao.buscarPorCodigo(2L);
+		Funcionario fun1 = dao.buscarPorCodigo(2L);
 
-		System.out.println(fun);
+
+		System.out.println(fun1);
+
 	}
 
 	@Test
-	
+	@Ignore
 	public void excluir() {
 		FuncionarioDAO dao = new FuncionarioDAO();
-		Funcionario fun = dao.buscarPorCodigo(2L);
+		Funcionario fun = dao.buscarPorCodigo(7L);
 
 		dao.excluir(fun);
 	}
@@ -57,12 +61,12 @@ public class FuncionarioDAOTest {
 	@Ignore
 	public void editar() {
 		FuncionarioDAO dao = new FuncionarioDAO();
-		Funcionario fun = dao.buscarPorCodigo(2L);
+		Funcionario fun = dao.buscarPorCodigo(5L);
 		
-		fun.setCpf("333.333.333-33");
-		fun.setFuncao("TESTE DE FUNCAO");
-		fun.setNome("TESTE DE USUARIO");
-		fun.setSenha("testedesenha");
+		fun.setCpf("444.444.444-44");
+		fun.setFuncao("COORDENADOR");
+		fun.setNome("PAULO MIRANDA");
+		fun.setSenha("for44fqqqqq");
 		
 		dao.editar(fun);
 	}
