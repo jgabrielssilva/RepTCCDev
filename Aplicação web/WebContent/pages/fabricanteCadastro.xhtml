@@ -8,8 +8,14 @@
 
 
   <ui:composition template="/templates/modeloGeral.xhtml" >
+  <ui:define name="metadata">
+  <f:metadata> 
+  <f:event listener="#{fabricanteBean.carregarCadastro}" type="preRenderView" />
+  
+  </f:metadata>  
+  </ui:define>
 <ui:define name="conteudo">
-<h:form>
+<h:form id="FormInBD">
 
 			<p:toolbar>
 				<f:facet name="left">
@@ -17,7 +23,7 @@
 				</f:facet>
 			</p:toolbar>
 
-<h:panelGrid columns="2">	
+<h:panelGrid id="PnInBD" columns="2">	
 <p:outputLabel value="Código:"/>
 <p:inputText size="10" readonly="true" value="#{fabricanteBean.fabricanteCadastro.codigo}" />
 
@@ -25,9 +31,11 @@
 <p:inputText maxlength="50" size="30" value="#{fabricanteBean.fabricanteCadastro.descricao}" />
 </h:panelGrid>		
 
-<h:panelGrid columns="3">
-<p:commandButton value="Novo"/>
-<p:commandButton value="Salvar" actionListener="#{fabricanteBean.salvar}" update=":msgGlobal" />
+<h:panelGrid columns="5">
+<p:commandButton value="Novo" actionListener="#{fabricanteBean.novo}" update=":FormInBD:PnInBD" />
+<p:commandButton value="Salvar" actionListener="#{fabricanteBean.salvar}" update=":msgGlobal :FormInBD:PnInBD" />
+<p:commandButton value="Excluir" actionListener="#{fabricanteBean.excluir}" update=":msgGlobal" />
+<p:commandButton value="Editar" actionListener="#{fabricanteBean.editar}" update=":msgGlobal"/>
 <p:commandButton value="Voltar" action="/pages/fabricantePesquisa.xhtml?faces-redirect=true" />
 </h:panelGrid>	
 </h:form>
