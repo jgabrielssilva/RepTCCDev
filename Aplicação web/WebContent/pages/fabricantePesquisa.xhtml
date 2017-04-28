@@ -9,17 +9,14 @@
 
 <ui:composition template="/templates/modeloGeral.xhtml">
 
-<ui:define name="metadata">
-<f:metadata> 
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event type="preRenderView"
+				listener="#{fabricanteBean.carregarPesquisa}" />
+		</f:metadata>
+	</ui:define>
 
-      <f:event type="preRenderView" listener="#{fabricanteBean.carregarPesquisa}"/>
-
-</f:metadata>
-
-</ui:define>
 	<ui:define name="conteudo">
-
-      
 		<h:form>
 			<p:toolbar>
 				<f:facet name="left">
@@ -27,40 +24,39 @@
 				</f:facet>
 			</p:toolbar>
 
-
-
 			<p:dataTable emptyMessage="Nenhum registro encontrado."
-                value="#{fabricanteBean.listaFabricantes}"
-                filteredValue="#{fabricanteBean.listaFabricantesFiltrados}"
-                var="fabricante" 
-                paginator="true" rows="10" >
-                
+				value="#{fabricanteBean.listaFabricantes}"
+				filteredValue="#{fabricanteBean.listaFabricantesFiltrados}"
+				var="fabricante" paginator="true" rows="10">
+
 				<f:facet name="footer">
-				<p:commandButton value="Novo"
-					action="/pages/fabricanteCadastro.xhtml?faces-redirect=true" />
+					<p:button value="Novo" outcome="/pages/fabricanteCadastro.xhtml">
+						<f:param name="fabacao" value="Novo" />
+					</p:button>
 				</f:facet>
 
 				<p:column headerText="Código">
-					<h:outputText value="#{fabricante.codigo}"/>
+					<h:outputText value="#{fabricante.codigo}" />
 				</p:column>
-				
-				<p:column headerText="Descrição" filterBy="#{fabricante.descricao}"  sortBy="#{fabricantes.descricao}" >
-					<h:outputText value="#{fabricante.descricao}"/>
+
+				<p:column headerText="Descrição" filterBy="#{fabricante.descricao}"
+					sortBy="#{fabricantes.descricao}">
+					<h:outputText value="#{fabricante.descricao}" />
 				</p:column>
-				
+
 				<p:column headerText="Opções">
-				<p:button value="Excluir" outcome="/pages/fabricanteCadastro.xhtml" >
-				<f:param name="fabcod" value="#{fabricante.codigo}" />
-				</p:button>
-				
-				<p:button value="Editar" outcome="/pages/fabricanteCadastro.xhtml">
-								<f:param name="fabcod"  value="#{fabricante.codigo}" />
-				</p:button>
-				
+					<p:button value="Excluir" outcome="/pages/fabricanteCadastro.xhtml">
+						<f:param name="fabacao" value="Excluir" />
+						<f:param name="fabcodigo" value="#{fabricante.codigo}" />
+					</p:button>
+					<p:button value="Editar" outcome="/pages/fabricanteCadastro.xhtml">
+						<f:param name="fabacao" value="Editar" />
+						<f:param name="fabcodigo" value="#{fabricante.codigo}" />
+					</p:button>
 				</p:column>
+
 			</p:dataTable>
 		</h:form>
-
 	</ui:define>
 </ui:composition>
 </html>

@@ -7,15 +7,18 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
-  <ui:composition template="/templates/modeloGeral.xhtml" >
-  <ui:define name="metadata">
-  <f:metadata> 
-  <f:event listener="#{fabricanteBean.carregarCadastro}" type="preRenderView" />
-  
-  </f:metadata>  
-  </ui:define>
-<ui:define name="conteudo">
-<h:form id="FormInBD">
+<ui:composition template="/templates/modeloGeral.xhtml">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="fabacao" value="#{fabricanteBean.acao}" />
+			<f:viewParam name="fabcodigo" value="#{fabricanteBean.codigo}" />
+			<f:event listener="#{fabricanteBean.carregarCadastro}" type="preRenderView" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form id="FormInBD">
 
 			<p:toolbar>
 				<f:facet name="left">
@@ -23,22 +26,41 @@
 				</f:facet>
 			</p:toolbar>
 
-<h:panelGrid id="PnInBD" columns="2">	
-<p:outputLabel value="Código:"/>
-<p:inputText size="10" readonly="true" value="#{fabricanteBean.fabricanteCadastro.codigo}" />
+			<h:panelGrid id="PnInBD" columns="2">
+				<p:outputLabel value="Código:" />
+				<p:inputText size="10" readonly="true"
+					value="#{fabricanteBean.fabricanteCadastro.codigo}" />
 
-<p:outputLabel value="Descrição:"/>
-<p:inputText maxlength="50" size="30" value="#{fabricanteBean.fabricanteCadastro.descricao}" />
-</h:panelGrid>		
+				<p:outputLabel value="Descrição:" />
+				<p:inputText maxlength="50" size="30"
+					value="#{fabricanteBean.fabricanteCadastro.descricao}"
+					readonly="#{fabricanteBean.acao == 'Excluir'}">
+					<f:validateBean />
+				</p:inputText>
+			</h:panelGrid>
 
-<h:panelGrid columns="5">
-<p:commandButton value="Novo" actionListener="#{fabricanteBean.novo}" update=":FormInBD:PnInBD" />
-<p:commandButton value="Salvar" actionListener="#{fabricanteBean.salvar}" update=":msgGlobal :FormInBD:PnInBD" />
-<p:commandButton value="Excluir" actionListener="#{fabricanteBean.excluir}" update=":msgGlobal" />
-<p:commandButton value="Editar" actionListener="#{fabricanteBean.editar}" update=":msgGlobal"/>
-<p:commandButton value="Voltar" action="/pages/fabricantePesquisa.xhtml?faces-redirect=true" />
-</h:panelGrid>	
-</h:form>
-</ui:define>
-  </ui:composition>
+			<h:panelGrid columns="5">
+				<p:commandButton value="Novo"
+					actionListener="#{fabricanteBean.novo}" update=":FormInBD:PnInBD"
+					rendered="#{fabricanteBean.acao == 'Novo'}" />
+
+				<p:commandButton value="Salvar"
+					actionListener="#{fabricanteBean.salvar}"
+					update=":msgGlobal :FormInBD:PnInBD"
+					rendered="#{fabricanteBean.acao == 'Novo'}" />
+
+				<p:commandButton value="Excluir"
+					actionListener="#{fabricanteBean.excluir}" update=":msgGlobal"
+					rendered="#{fabricanteBean.acao == 'Excluir'}" />
+
+				<p:commandButton value="Editar"
+					actionListener="#{fabricanteBean.editar}" update=":msgGlobal"
+					rendered="#{fabricanteBean.acao == 'Editar'}" />
+
+				<p:button value="Voltar" outcome="/pages/fabricantePesquisa.xhtml" />
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

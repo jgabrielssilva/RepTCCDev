@@ -1,10 +1,8 @@
 package br.com.drogaria.bean;
 
 import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
 import br.com.drogaria.dao.FabricanteDAO;
 import br.com.drogaria.domain.Fabricante;
 import br.com.drogaria.util.FacesUtil;
@@ -18,6 +16,8 @@ public class FabricanteBean {
 	
 	private List<Fabricante> listaFabricantesFiltrados;
 	
+	private String acao;
+	private Long codigo;
 
 	public Fabricante getFabricanteCadastro() {
 
@@ -45,7 +45,25 @@ public class FabricanteBean {
 	public void setListaFabricantesFiltrados(List<Fabricante> listaFabricantesFiltrados) {
 		this.listaFabricantesFiltrados = listaFabricantesFiltrados;
 	}
+	
 
+	public String getAcao() {
+		return acao;
+	}
+	
+	public void setAcao(String acao) {
+		this.acao = acao;
+	}
+	
+	public Long getCodigo() {
+		return codigo;
+	}
+	
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+	
+	
 	
 	
 	public void novo() {
@@ -76,13 +94,8 @@ public class FabricanteBean {
 
 	public void carregarCadastro() {
 		try {
-			String valor = FacesUtil.getParam("fabcod");
-
-			if (valor != null) {
-				Long codigo = Long.parseLong(valor);
-
+			if (codigo != null) {
 				FabricanteDAO fabricanteDAO = new FabricanteDAO();
-
 				fabricanteCadastro = fabricanteDAO.buscarPorCodigo(codigo);
 			} else {
 				fabricanteCadastro = new Fabricante();

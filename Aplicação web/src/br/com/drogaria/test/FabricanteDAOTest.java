@@ -9,22 +9,22 @@ import br.com.drogaria.domain.Fabricante;
 public class FabricanteDAOTest {
 	
 	@Test
-	@Ignore
+    @Ignore
 	public void salvar(){
 		
-		Fabricante fab1 = new Fabricante();
-		fab1.setDescricao("LENOVO");
+		Fabricante fab81 = new Fabricante();
+		fab81.setDescricao("LENOVO");
 		
-		Fabricante fab2 = new Fabricante();
-		fab2.setDescricao("SONY");
+		Fabricante fab82 = new Fabricante();
+		fab82.setDescricao("SONY");
 		
-		Fabricante fab3 = new Fabricante();
-		fab3.setDescricao("INTEL");
+		Fabricante fab83 = new Fabricante();
+		fab83.setDescricao("INTEL");
 			
 		FabricanteDAO dao = new FabricanteDAO();
-		dao.salvar(fab1);
-		dao.salvar(fab2);
-		dao.salvar(fab3);
+		dao.salvar(fab81);
+		dao.salvar(fab82);
+		dao.salvar(fab83);
 	}
 		
 	@Test
