@@ -22,4 +22,8 @@
 	<param-value>humanity</param-value>
 </context-param>
 
+<listener>
+<listener-class>br.com.drogaria.util.ContextListener</listener-class>
+</listener>
+
 </web-app>
