@@ -1,23 +1,31 @@
-package br.com.drogaria.test;
+package br.com.sysbebidas.test;
 
 import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import br.com.drogaria.dao.FuncionarioDAO;
-import br.com.drogaria.domain.Funcionario;
+
+import br.com.sysbebidas.dao.CargoDAO;
+import br.com.sysbebidas.dao.FuncionarioDAO;
+import br.com.sysbebidas.domain.Cargo;
+import br.com.sysbebidas.domain.Funcionario;
+
 
 public class FuncionarioDAOTest {
 	
 	@Test
 	@Ignore
+
 	public void salvar() {
+		CargoDAO cargoDAO = new CargoDAO();
+		Cargo cargo = cargoDAO.buscarPorCodigo(5L);
 
 		Funcionario fun1 = new Funcionario();
-		fun1.setCpf("339.553.113-83");
-		fun1.setFuncao("MOTORISTA");
-		fun1.setNome("JOSE CARLOS");
-		fun1.setSenha("en9888888");
+		fun1.setCpf("688.748.339-29");
+		fun1.setNome("lala lala");
+		fun1.setSenha("en5897799");
+		
+		fun1.setCargo(cargo);
 		
 
 		FuncionarioDAO dao = new FuncionarioDAO();
@@ -64,7 +72,11 @@ public class FuncionarioDAOTest {
 		Funcionario fun = dao.buscarPorCodigo(5L);
 		
 		fun.setCpf("444.444.444-44");
-		fun.setFuncao("COORDENADOR");
+	
+		CargoDAO cargoDAO = new CargoDAO();
+		Cargo cargo = cargoDAO.buscarPorCodigo(9L);
+		fun.setCargo(cargo);
+	
 		fun.setNome("PAULO MIRANDA");
 		fun.setSenha("for44fqqqqq");
 		

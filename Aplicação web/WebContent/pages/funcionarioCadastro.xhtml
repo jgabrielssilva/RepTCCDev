@@ -8,9 +8,17 @@
 
 
 <ui:composition template="/templates/modeloGeral.xhtml">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="funacao" value="#{funcionarioBean.acao}" />
+			<f:viewParam name="funcodigo" value="#{funcionarioBean.codigo}" />
+			<f:event listener="#{funcionarioBean.carregarCadastro}" type="preRenderView" />
+		</f:metadata>
+	</ui:define>
+
 	<ui:define name="conteudo">
-	
-	<h:form>
+	<h:form id="FormInBD" >
 
 			<p:toolbar>
 				<f:facet name="left">
@@ -18,33 +26,77 @@
 				</f:facet>
 			</p:toolbar>
 
-			<h:panelGrid columns="2">
+			<h:panelGrid id="PnInBD" columns="2">
 				<p:outputLabel value="Código:" />
 				<p:inputText size="10" readonly="true" value="#{funcionarioBean.funcionarioCadastro.codigo}" />
 
 				<p:outputLabel value="Nome:" />
 				<p:inputText maxlength="50" size="30" value="#{funcionarioBean.funcionarioCadastro.nome}" />
 
-				<p:outputLabel value="CPF:" />
-				<p:inputMask mask="999.999.999-99" size="10" value="#{funcionarioBean.funcionarioCadastro.cpf}" />
+								<p:outputLabel value="CPF:" />
+				<p:inputMask mask="999.999.999-99" size="15"
+					value="#{funcionarioBean.funcionarioCadastro.cpf}"
+					readonly="#{funcionarioBean.acao == 'Excluir'}">
+						<f:validateBean />
+				</p:inputMask>
+				
+				
+				
+				
 
-				<p:outputLabel value="Função:" />
-				<p:selectOneMenu>
-					<f:selectItem itemLabel="Balconista" />
-					<f:selectItem itemLabel="Professor" />
-					<f:selectItem itemLabel="Gerente" />
-					<f:selectItem itemLabel="Selecione a função" />
+				<p:outputLabel value="Cargo:" />
+				<p:selectOneMenu value="#{funcionarioBean.funcionarioCadastro.cargo}" 
+				converter="cargoConverter">
+				<f:selectItem itemValue="" itemLabel="Selecione o cargo" />
+				<f:selectItems value="#{funcionarioBean.listaCargos}"
+				var="cargo" itemValue="#{cargo}" itemLabel="#{cargo.descricao}" />
+				<f:validateBean />
 				</p:selectOneMenu>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<p:outputLabel value="Data de Nascimento:" />
+				<p:calendar value="#{funcionarioBean.funcionarioCadastro.datanascimento}" size="15" />
+				
+								<p:outputLabel value="Admissão:" />
+				<p:calendar value="#{funcionarioBean.funcionarioCadastro.admissao}" size="15" />
 
 				<p:outputLabel value="Senha:" />
-				<p:password maxlength="8" size="10" value="#{funcionarioBean.funcionarioCadastro.senha}" />
+				<p:password maxlength="8" size="15" 
+				value="#{funcionarioBean.funcionarioCadastro.senha}" 
+				readonly="#{funcionarioBean.acao == 'Excluir'}" >
+				<f:validateBean />
+				</p:password>
+				
 			</h:panelGrid>
 
-			<h:panelGrid columns="3">
-<p:commandButton value="Novo"/>
-<p:commandButton value="Salvar" actionListener="#{funcionarioBean.salvar}" update=":msgGlobal" />
-<p:commandButton value="Voltar" action="/pages/funcionarioPesquisa.xhtml?faces-redirect=true" />
-</h:panelGrid>	
+			<h:panelGrid columns="5">
+				<p:commandButton value="Novo"
+					actionListener="#{funcionarioBean.novo}" update=":FormInBD:PnInBD"
+					rendered="#{funcionarioBean.acao == 'Novo'}" />
+
+				<p:commandButton value="Salvar"
+					actionListener="#{funcionarioBean.salvar}"
+					update=":msgGlobal :FormInBD:PnInBD"
+					rendered="#{funcionarioBean.acao == 'Novo'}" />
+
+				<p:commandButton value="Excluir"
+					actionListener="#{funcionarioBean.excluir}" update=":msgGlobal"
+					rendered="#{funcionarioBean.acao == 'Excluir'}" />
+
+				<p:commandButton value="Editar"
+					actionListener="#{funcionarioBean.editar}" update=":msgGlobal"
+					rendered="#{funcionarioBean.acao == 'Editar'}" />
+
+				<p:button value="Voltar" outcome="/pages/funcionarioPesquisa.xhtml" />
+
+			</h:panelGrid>	
 </h:form>
 
 	</ui:define>

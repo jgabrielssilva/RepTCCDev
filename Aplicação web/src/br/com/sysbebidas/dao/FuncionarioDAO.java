@@ -1,11 +1,12 @@
-package br.com.drogaria.dao;
+package br.com.sysbebidas.dao;
 
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import br.com.drogaria.domain.Funcionario;
-import br.com.drogaria.util.HibernateUtil;
+
+import br.com.sysbebidas.domain.Funcionario;
+import br.com.sysbebidas.util.HibernateUtil;
 
 public class FuncionarioDAO {
 	
