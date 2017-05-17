@@ -10,7 +10,7 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/db_drogaria</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/db_sysbebidas</property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
 
@@ -32,12 +32,14 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">validate</property>
 
-        <mapping class="br.com.drogaria.domain.Fabricante" />
-        <mapping class="br.com.drogaria.domain.Funcionario" />
-        <mapping class="br.com.drogaria.domain.Produto" />
-        <mapping class="br.com.drogaria.domain.Venda" />
-        <mapping class="br.com.drogaria.domain.Item" />
-        <mapping class="br.com.drogaria.domain.Departamento" />
+        <mapping class="br.com.sysbebidas.domain.Fabricante" />
+        <mapping class="br.com.sysbebidas.domain.Funcionario" />
+        <mapping class="br.com.sysbebidas.domain.Bebida" />
+        <mapping class="br.com.sysbebidas.domain.Venda" />
+        <mapping class="br.com.sysbebidas.domain.Item" />
+        <mapping class="br.com.sysbebidas.domain.Departamento" />
+        <mapping class="br.com.sysbebidas.domain.Cargo" />
+        <mapping class="br.com.sysbebidas.domain.Categoria" />
 
     </session-factory>
 

@@ -1,4 +1,4 @@
-package br.com.drogaria.util;
+package br.com.sysbebidas.util;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
