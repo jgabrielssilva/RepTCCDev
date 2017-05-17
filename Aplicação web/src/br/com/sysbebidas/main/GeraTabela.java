@@ -1,6 +1,6 @@
-package br.com.drogaria.main;
+package br.com.sysbebidas.main;
 
-import br.com.drogaria.util.HibernateUtil;
+import br.com.sysbebidas.util.HibernateUtil;
 
 public class GeraTabela {
 

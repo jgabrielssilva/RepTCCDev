@@ -11,7 +11,7 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>drogaria</title>
+	<title>Sistema de Bebidas</title>
 	<h:outputStylesheet library="css" name="estilos.css" />
 </h:head>
 <h:body>
@@ -21,7 +21,7 @@
 	<p:layout fullPage="true">
 
 		<p:layoutUnit position="north" size="50"
-		 header="ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤSYSBEER">
+		 header="ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤSYSBEBIDAS">
 		</p:layoutUnit>
 
 		<p:layoutUnit position="south" size="45" header="Suporte: (81) 3551-2325" >
@@ -35,11 +35,13 @@
 					<p:menuitem value="Início" outcome="/pages/principal.xhtml" />
 					<p:menuitem value="Sair" />
 				</p:submenu>
-				<p:submenu label="Cadastros">
+				<p:submenu label="Cadastros e Consultas ">
 					<p:menuitem value="Fabricantes" outcome="/pages/fabricantePesquisa.xhtml"/>
-					<p:menuitem value="Produtos" />
-					<p:menuitem value="Funcionarios" outcome="/pages/funcionarioPesquisa.xhtml"/>
+					<p:menuitem value="Categorias" outcome="/pages/categoriaPesquisa.xhtml"/>
+					<p:menuitem value="Bebidas" />
 					<p:menuitem value="Departamentos" outcome="/pages/departamentoPesquisa.xhtml"/>
+					<p:menuitem value="Cargos" outcome="/pages/cargoPesquisa.xhtml" />
+					<p:menuitem value="Funcionarios" outcome="/pages/funcionarioPesquisa.xhtml"/>
 				</p:submenu>
 				<p:submenu label="Vendas">
 				</p:submenu>
