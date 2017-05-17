@@ -40,10 +40,29 @@
 				</p:column>
 
 				<p:column headerText="Descrição" filterBy="#{fabricante.descricao}"
-					sortBy="#{fabricantes.descricao}">
+					sortBy="#{fabricante.descricao}">
 					<h:outputText value="#{fabricante.descricao}" />
 				</p:column>
-
+				
+								<p:column headerText="CNPJ" filterBy="#{fabricante.cnpj}"
+					sortBy="#{fabricante.cnpj}">
+					<h:outputText value="#{fabricante.cnpj}" />
+				</p:column>
+				
+					<p:column headerText="País" filterBy="#{fabricante.pais}"
+					sortBy="#{fabricante.pais}">
+					<h:outputText value="#{fabricante.pais}" />
+				</p:column>
+				
+				<p:column headerText="Início de contrato" >
+					<h:outputText value="#{fabricante.iniciocontrato}" />
+				</p:column>
+				
+					<p:column headerText="Fim de contrato" >
+					<h:outputText value="#{fabricante.finalcontrato}" />
+				</p:column>
+				
+				
 				<p:column headerText="Opções">
 					<p:button value="Excluir" outcome="/pages/fabricanteCadastro.xhtml">
 						<f:param name="fabacao" value="Excluir" />

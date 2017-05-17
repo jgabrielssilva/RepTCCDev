@@ -1,10 +1,11 @@
-package br.com.drogaria.test;
+package br.com.sysbebidas.test;
 
 import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
-import br.com.drogaria.dao.FabricanteDAO;
-import br.com.drogaria.domain.Fabricante;
+
+import br.com.sysbebidas.dao.FabricanteDAO;
+import br.com.sysbebidas.domain.Fabricante;
 
 public class FabricanteDAOTest {
 	

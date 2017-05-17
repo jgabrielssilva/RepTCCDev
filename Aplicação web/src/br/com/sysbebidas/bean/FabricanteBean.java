@@ -1,11 +1,12 @@
-package br.com.drogaria.bean;
+package br.com.sysbebidas.bean;
 
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import br.com.drogaria.dao.FabricanteDAO;
-import br.com.drogaria.domain.Fabricante;
-import br.com.drogaria.util.FacesUtil;
+
+import br.com.sysbebidas.dao.FabricanteDAO;
+import br.com.sysbebidas.domain.Fabricante;
+import br.com.sysbebidas.util.FacesUtil;
 
 @ManagedBean
 @ViewScoped

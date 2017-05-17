@@ -28,15 +28,48 @@
 
 			<h:panelGrid id="PnInBD" columns="2">
 				<p:outputLabel value="Código:" />
-				<p:inputText size="10" readonly="true"
+				<p:inputText size="15" readonly="true"
 					value="#{fabricanteBean.fabricanteCadastro.codigo}" />
 
 				<p:outputLabel value="Descrição:" />
-				<p:inputText maxlength="50" size="30"
+				<p:inputText maxlength="50" size="15"
 					value="#{fabricanteBean.fabricanteCadastro.descricao}"
 					readonly="#{fabricanteBean.acao == 'Excluir'}">
 					<f:validateBean />
 				</p:inputText>
+				
+								<p:outputLabel value="CNPJ:" />
+				<p:inputMask mask="99.999.999/9999-99" maxlength="50" size="15"
+					value="#{fabricanteBean.fabricanteCadastro.cnpj}"
+					readonly="#{fabricanteBean.acao == 'Excluir'}">
+	
+					<f:validateBean />
+				</p:inputMask>
+
+
+				
+				
+				<p:outputLabel value="País:" />
+				<p:selectOneMenu>
+				<f:selectItem itemLabel="Selecione" />
+					<f:selectItem itemLabel="China" />
+					<f:selectItem itemLabel="Estados Unidos" />
+					<f:selectItem itemLabel="Brasil" />
+					<f:selectItem itemLabel="Rússia" />
+					<f:selectItem itemLabel="Alemanha" />
+					<f:selectItem itemLabel="Argentina" />
+					<f:selectItem itemLabel="República Tcheca" />
+					<f:selectItem itemLabel="Irlanda" />
+					<f:selectItem itemLabel="Polônia" />
+					<f:selectItem itemLabel="Paris" />
+				</p:selectOneMenu>
+				   
+				<p:outputLabel value="Início de contrato:" />
+				<p:calendar value="#{fabricanteBean.fabricanteCadastro.iniciocontrato}" size="15" />
+				
+                 <p:outputLabel value="Final de contrato:" />
+				<p:calendar value="#{fabricanteBean.fabricanteCadastro.finalcontrato}" size="15" />
+				
 			</h:panelGrid>
 
 			<h:panelGrid columns="5">
