@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+<ui:composition template="/templates/modeloGeral.xhtml">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="caracao" value="#{cargoBean.acao}" />
+			<f:viewParam name="carcodigo" value="#{cargoBean.codigo}" />
+			<f:event listener="#{cargoBean.carregarCadastro}" type="preRenderView" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form id="FormInBD">
+
+			<p:toolbar>
+				<f:facet name="left">
+					<h:outputText value="Cargos" />
+				</f:facet>
+			</p:toolbar>
+
+			<h:panelGrid id="PnInBD" columns="2">
+				<p:outputLabel value="Código:" />
+				<p:inputText size="15" readonly="true"
+					value="#{cargoBean.cargoCadastro.codigo}" />
+
+				<p:outputLabel value="Descrição:" />
+				<p:inputText maxlength="50" size="15"
+					value="#{cargoBean.cargoCadastro.descricao}"
+					readonly="#{cargoBean.acao == 'Excluir'}">
+					<f:validateBean />
+				</p:inputText>
+				
+				
+				<p:outputLabel value="Piso Salarial:" />
+				<p:inputText size="15"
+					value="#{cargoBean.cargoCadastro.pisosalarial}"
+					readonly="#{cargoBean.acao == 'Excluir'}">
+					<f:validateBean />
+				</p:inputText>
+				
+				
+				
+				
+				
+				
+				<p:outputLabel value="Departamento:" />
+				<p:selectOneMenu value="#{cargoBean.cargoCadastro.departamento}" 
+				converter="departamentoConverter">
+				<f:selectItem itemValue="" itemLabel="Selecione o departamento" />
+				<f:selectItems value="#{cargoBean.listaDepartamentos}"
+				var="departamento" itemValue="#{departamento}" itemLabel="#{departamento.descricao}" />
+				<f:validateBean />
+				</p:selectOneMenu>
+				
+
+				
+			</h:panelGrid>
+
+			<h:panelGrid columns="5">
+				<p:commandButton value="Novo"
+					actionListener="#{cargoBean.novo}" update=":FormInBD:PnInBD"
+					rendered="#{cargoBean.acao == 'Novo'}" />
+
+				<p:commandButton value="Salvar"
+					actionListener="#{cargoBean.salvar}"
+					update=":msgGlobal :FormInBD:PnInBD"
+					rendered="#{cargoBean.acao == 'Novo'}" />
+
+				<p:commandButton value="Excluir"
+					actionListener="#{cargoBean.excluir}" update=":msgGlobal"
+					rendered="#{cargoBean.acao == 'Excluir'}" />
+
+				<p:commandButton value="Editar"
+					actionListener="#{cargoBean.editar}" update=":msgGlobal"
+					rendered="#{cargoBean.acao == 'Editar'}" />
+
+				<p:button value="Voltar" outcome="/pages/cargoPesquisa.xhtml" />
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
