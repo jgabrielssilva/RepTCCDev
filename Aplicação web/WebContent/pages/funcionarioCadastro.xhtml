@@ -31,12 +31,13 @@
 				<p:inputText size="10" readonly="true" value="#{funcionarioBean.funcionarioCadastro.codigo}" />
 
 				<p:outputLabel value="Nome:" />
-				<p:inputText maxlength="50" size="30" value="#{funcionarioBean.funcionarioCadastro.nome}" />
+				<p:inputText maxlength="50" size="30" value="#{funcionarioBean.funcionarioCadastro.nome}" 
+				readonly="#{funcionarioBean.acao == 'Excluir'}"/>
 
 								<p:outputLabel value="CPF:" />
 				<p:inputMask mask="999.999.999-99" size="15"
 					value="#{funcionarioBean.funcionarioCadastro.cpf}"
-					readonly="#{funcionarioBean.acao == 'Excluir'}">
+					readonly="#{funcionarioBean.acao == 'Excluir'}"  >
 						<f:validateBean />
 				</p:inputMask>
 				
@@ -46,7 +47,7 @@
 
 				<p:outputLabel value="Cargo:" />
 				<p:selectOneMenu value="#{funcionarioBean.funcionarioCadastro.cargo}" 
-				converter="cargoConverter">
+				converter="cargoConverter"  disabled="#{funcionarioBean.acao == 'Excluir'}" >
 				<f:selectItem itemValue="" itemLabel="Selecione o cargo" />
 				<f:selectItems value="#{funcionarioBean.listaCargos}"
 				var="cargo" itemValue="#{cargo}" itemLabel="#{cargo.descricao}" />
@@ -62,15 +63,18 @@
 				
 				
 				<p:outputLabel value="Data de Nascimento:" />
-				<p:calendar value="#{funcionarioBean.funcionarioCadastro.datanascimento}" size="15" />
+				<p:calendar value="#{funcionarioBean.funcionarioCadastro.datanascimento}" size="15" 
+				disabled="#{funcionarioBean.acao == 'Excluir'}" />
 				
 								<p:outputLabel value="Admissão:" />
-				<p:calendar value="#{funcionarioBean.funcionarioCadastro.admissao}" size="15" />
+				<p:calendar value="#{funcionarioBean.funcionarioCadastro.admissao}" size="15" 
+				disabled="#{funcionarioBean.acao == 'Excluir'}"/>
 
 				<p:outputLabel value="Senha:" />
 				<p:password maxlength="8" size="15" 
 				value="#{funcionarioBean.funcionarioCadastro.senha}" 
-				readonly="#{funcionarioBean.acao == 'Excluir'}" >
+				readonly="#{funcionarioBean.acao == 'Excluir'}" 
+				redisplay="true" >
 				<f:validateBean />
 				</p:password>
 				

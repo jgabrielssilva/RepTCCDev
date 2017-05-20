@@ -36,6 +36,7 @@ public class Funcionario {
 	@Column(name = "fun_codigo")
 	private Long codigo;
 	
+	@NotEmpty(message ="O campo Nome é obrigatório")
 	@Column(name = "fun_nome", length = 50, nullable = false)
 	private String nome;
 	
@@ -53,12 +54,12 @@ public class Funcionario {
 	@JoinColumn(name = "tbl_cargos_car_codigo", referencedColumnName = "car_codigo", nullable = false)
 	private Cargo cargo;
 
-	
+	@NotNull(message ="O campo Data de Nascimento é obrigatório")
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "fun_datanascimento", nullable = false)
 	private Date datanascimento;
 	
-	
+	@NotNull(message ="O campo Admissão é obrigatório")
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "fun_admissao", nullable = false)
 	private Date admissao;
