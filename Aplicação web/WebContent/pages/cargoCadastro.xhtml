@@ -53,7 +53,7 @@
 				
 				<p:outputLabel value="Departamento:" />
 				<p:selectOneMenu value="#{cargoBean.cargoCadastro.departamento}" 
-				converter="departamentoConverter">
+				converter="departamentoConverter" disabled="#{cargoBean.acao == 'Excluir'}">
 				<f:selectItem itemValue="" itemLabel="Selecione o departamento" />
 				<f:selectItems value="#{cargoBean.listaDepartamentos}"
 				var="departamento" itemValue="#{departamento}" itemLabel="#{departamento.descricao}" />
