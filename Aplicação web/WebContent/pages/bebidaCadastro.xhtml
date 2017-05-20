@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+<ui:composition template="/templates/modeloGeral.xhtml">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="bebacao" value="#{bebidaBean.acao}" />
+			<f:viewParam name="bebcodigo" value="#{bebidaBean.codigo}" />
+			<f:event listener="#{bebidaBean.carregarCadastro}" type="preRenderView" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form id="FormInBD">
+
+			<p:toolbar>
+				<f:facet name="left">
+					<h:outputText value="Bebidas" />
+				</f:facet>
+			</p:toolbar>
+
+			<h:panelGrid id="PnInBD" columns="2">
+				<p:outputLabel value="Código:" />
+				<p:inputText size="15" readonly="true"
+					value="#{bebidaBean.bebidaCadastro.codigo}" />
+
+				<p:outputLabel value="Descrição:" />
+				<p:inputText maxlength="50" size="15"
+					value="#{bebidaBean.bebidaCadastro.descricao}"
+					readonly="#{bebidaBean.acao == 'Excluir'}">
+					<f:validateBean />
+				</p:inputText>
+				
+				<p:outputLabel value="Preço:" />
+				<p:inputText size="15"
+					value="#{bebidaBean.bebidaCadastro.preco}"
+					readonly="#{bebidaBean.acao == 'Excluir'}">
+					<f:validateBean />
+				</p:inputText>
+				
+								<p:outputLabel value="Quantidade:" />
+				<p:inputText size="15"
+					value="#{bebidaBean.bebidaCadastro.quantidade}"
+					readonly="#{bebidaBean.acao == 'Excluir'}">
+					<f:validateBean />
+				</p:inputText>
+				
+				<p:outputLabel value="Categoria:" />
+				<p:selectOneMenu value="#{bebidaBean.bebidaCadastro.categoria}" 
+				converter="categoriaConverter" disabled="#{bebidaBean.acao == 'Excluir'}" >
+				<f:selectItem itemValue="" itemLabel="Selecione a categoria" />
+				<f:selectItems value="#{bebidaBean.listaCategorias}"
+				var="categoria" itemValue="#{categoria}" itemLabel="#{categoria.descricao}" />
+				<f:validateBean />
+				</p:selectOneMenu>
+				
+				<p:outputLabel value="Fabricante:" />
+				<p:selectOneMenu value="#{bebidaBean.bebidaCadastro.fabricante}" 
+				converter="fabricanteConverter" disabled="#{bebidaBean.acao == 'Excluir'}">
+				<f:selectItem itemValue="" itemLabel="Selecione o fabricante" />
+				<f:selectItems value="#{bebidaBean.listaFabricantes}"
+				var="fabricante" itemValue="#{fabricante}" itemLabel="#{fabricante.descricao}" />
+				<f:validateBean />
+				</p:selectOneMenu>
+				
+			</h:panelGrid>
+
+			<h:panelGrid columns="5">
+				<p:commandButton value="Novo"
+					actionListener="#{bebidaBean.novo}" update=":FormInBD:PnInBD"
+					rendered="#{bebidaBean.acao == 'Novo'}" />
+
+				<p:commandButton value="Salvar"
+					actionListener="#{bebidaBean.salvar}"
+					update=":msgGlobal :FormInBD:PnInBD"
+					rendered="#{bebidaBean.acao == 'Novo'}" />
+
+				<p:commandButton value="Excluir"
+					actionListener="#{bebidaBean.excluir}" update=":msgGlobal"
+					rendered="#{bebidaBean.acao == 'Excluir'}" />
+
+				<p:commandButton value="Editar"
+					actionListener="#{bebidaBean.editar}" update=":msgGlobal"
+					rendered="#{bebidaBean.acao == 'Editar'}" />
+
+				<p:button value="Voltar" outcome="/pages/bebidaPesquisa.xhtml" />
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
