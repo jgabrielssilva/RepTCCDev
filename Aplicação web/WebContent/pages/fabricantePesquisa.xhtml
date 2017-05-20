@@ -35,7 +35,7 @@
 					</p:button>
 				</f:facet>
 
-				<p:column headerText="Código">
+				<p:column headerText="Código" style="width: 8%">
 					<h:outputText value="#{fabricante.codigo}" />
 				</p:column>
 
@@ -49,21 +49,21 @@
 					<h:outputText value="#{fabricante.cnpj}" />
 				</p:column>
 				
-					<p:column headerText="País" filterBy="#{fabricante.pais}"
+					<p:column headerText="País de Origem" filterBy="#{fabricante.pais}"
 					sortBy="#{fabricante.pais}">
 					<h:outputText value="#{fabricante.pais}" />
 				</p:column>
 				
-				<p:column headerText="Início de contrato" >
+				<p:column headerText="Início de contrato" style="width: 13%" sortBy="#{fabricante.iniciocontrato}" >
 					<h:outputText value="#{fabricante.iniciocontrato}" />
 				</p:column>
 				
-					<p:column headerText="Fim de contrato" >
+					<p:column headerText="Fim de contrato" style="width: 13%" sortBy="#{fabricante.finalcontrato}" >
 					<h:outputText value="#{fabricante.finalcontrato}" />
 				</p:column>
 				
 				
-				<p:column headerText="Opções">
+				<p:column headerText="Opções" style="width: 13%">
 					<p:button value="Excluir" outcome="/pages/fabricanteCadastro.xhtml">
 						<f:param name="fabacao" value="Excluir" />
 						<f:param name="fabcodigo" value="#{fabricante.codigo}" />

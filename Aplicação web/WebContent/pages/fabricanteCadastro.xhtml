@@ -49,26 +49,27 @@
 
 				
 				
-				<p:outputLabel value="País:" />
-				<p:selectOneMenu>
-				<f:selectItem itemLabel="Selecione" />
-					<f:selectItem itemLabel="China" />
-					<f:selectItem itemLabel="Estados Unidos" />
-					<f:selectItem itemLabel="Brasil" />
-					<f:selectItem itemLabel="Rússia" />
-					<f:selectItem itemLabel="Alemanha" />
-					<f:selectItem itemLabel="Argentina" />
-					<f:selectItem itemLabel="República Tcheca" />
-					<f:selectItem itemLabel="Irlanda" />
-					<f:selectItem itemLabel="Polônia" />
-					<f:selectItem itemLabel="Paris" />
+				<p:outputLabel value="País de Origem:" />
+				<p:selectOneMenu value="#{fabricanteBean.fabricanteCadastro.pais}" disabled="#{fabricanteBean.acao == 'Excluir'}" >
+				<f:validateBean />
+				<f:selectItem itemValue="" itemLabel="Selecione o país de origem" />
+					<f:selectItem itemValue="Argentina" itemLabel="Argentina"/>
+					<f:selectItem itemValue="Brasil" itemLabel="Brasil" />
+					<f:selectItem itemValue="Bélgica" itemLabel="Bélgica" />
+					<f:selectItem itemValue="Estados Unidos" itemLabel="Estados Unidos" />
+					<f:selectItem itemValue="França" itemLabel="França" />
+	                <f:selectItem itemValue="Holanda" itemLabel="Holanda" />
+	                <f:selectItem itemValue="Paris" itemLabel="Paris" />
+	                <f:selectItem itemValue="Reino Unido" itemLabel="Reino Unido" />
 				</p:selectOneMenu>
 				   
 				<p:outputLabel value="Início de contrato:" />
-				<p:calendar value="#{fabricanteBean.fabricanteCadastro.iniciocontrato}" size="15" />
+				<p:calendar value="#{fabricanteBean.fabricanteCadastro.iniciocontrato}" size="15" 
+				disabled="#{fabricanteBean.acao == 'Excluir'}" />
 				
                  <p:outputLabel value="Final de contrato:" />
-				<p:calendar value="#{fabricanteBean.fabricanteCadastro.finalcontrato}" size="15" />
+				<p:calendar value="#{fabricanteBean.fabricanteCadastro.finalcontrato}" size="15" 
+				disabled="#{fabricanteBean.acao == 'Excluir'}" />
 				
 			</h:panelGrid>
 

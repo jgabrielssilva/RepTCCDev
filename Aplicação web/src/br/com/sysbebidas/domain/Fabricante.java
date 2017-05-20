@@ -12,8 +12,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 @Entity
 @Table(name = "tbl_fabricantes")
@@ -33,6 +35,7 @@ public class Fabricante {
 	@Column(name = "fab_descricao", length = 50, nullable = false)
 	private String descricao;
 	
+	@CNPJ(message = "O CNPJ informado é inválido")
 	@Column(name = "fab_cnpj", length = 14, nullable = false, unique = true)
 	private String cnpj;
 	
@@ -41,10 +44,12 @@ public class Fabricante {
 	@Column(name = "fab_pais", length = 50, nullable = false)
 	private String pais;
 	
+	@NotNull(message ="O campo Data de Início de contrato é obrigatório")
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "fab_iniciocontrato", nullable = false)
 	private Date iniciocontrato;
 	
+	@NotNull(message ="O campo Data de Final de contrato é obrigatório")
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "fab_finalcontrato", nullable = false)
 	private Date finalcontrato;
