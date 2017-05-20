@@ -35,7 +35,7 @@
 					</p:button>
 				</f:facet>
 
-				<p:column headerText="Código">
+				<p:column headerText="Código" style="width: 8%">
 					<h:outputText value="#{departamento.codigo}" />
 				</p:column>
 
@@ -43,7 +43,7 @@
 					sortBy="#{departamentos.descricao}">
 					<h:outputText value="#{departamento.descricao}" />
 				</p:column>
-				<p:column headerText="Opções">
+				<p:column headerText="Opções" style="width: 13%">
 					<p:button value="Excluir" outcome="/pages/departamentoCadastro.xhtml">
 						<f:param name="depacao" value="Excluir" />
 						<f:param name="depcodigo" value="#{departamento.codigo}" />
