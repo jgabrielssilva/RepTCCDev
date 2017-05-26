@@ -29,21 +29,46 @@
 
 		<p:layoutUnit position="west" size="250">
             
-            <h:form>
-			<p:panelMenu>
-				<p:submenu label="Opções">
-					<p:menuitem value="Início" outcome="/pages/principal.xhtml" />
-					<p:menuitem value="Sair" />
+            <h:form id="FrmMenuPrincipal">
+			<p:panelMenu id="PnMenuPrincipal">
+				<p:submenu label="Opções" >
+				<p:menuitem value="Autenticação" outcome="/pages/autenticacao.xhtml" 
+				rendered="#{autenticacaoBean.funcionarioLogado.cargo == null}" />
+					<p:menuitem value="Início" outcome="/pages/principal.xhtml" 
+					rendered="#{autenticacaoBean.funcionarioLogado.cargo != null}" />
+					<p:menuitem value="Sair"  action="#{autenticacaoBean.sair}"
+					rendered="#{autenticacaoBean.funcionarioLogado.cargo != null}" />
 				</p:submenu>
-				<p:submenu label="Cadastros e Consultas ">
-					<p:menuitem value="Fabricantes" outcome="/pages/fabricantePesquisa.xhtml"/>
-					<p:menuitem value="Categorias" outcome="/pages/categoriaPesquisa.xhtml"/>
-					<p:menuitem value="Bebidas" outcome="/pages/bebidaPesquisa.xhtml"/>
-					<p:menuitem value="Departamentos" outcome="/pages/departamentoPesquisa.xhtml"/>
-					<p:menuitem value="Cargos" outcome="/pages/cargoPesquisa.xhtml" />
-					<p:menuitem value="Funcionarios" outcome="/pages/funcionarioPesquisa.xhtml"/>
-				</p:submenu>
-				<p:submenu label="Vendas">
+				<p:submenu label="Cadastros e Consultas " rendered="#{autenticacaoBean.funcionarioLogado.cargo != null
+				 and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'}" >
+				
+					<p:menuitem value="Fabricantes" outcome="/pages/fabricantePesquisa.xhtml" 
+					 		rendered="#{autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL' 
+							and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'}" />
+					
+					<p:menuitem value="Categorias" outcome="/pages/categoriaPesquisa.xhtml" 
+						    rendered="#{autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL' 
+							and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'}" />
+					
+					<p:menuitem value="Bebidas" outcome="/pages/bebidaPesquisa.xhtml"
+							rendered="#{autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL'}" />
+					
+					<p:menuitem value="Departamentos" outcome="/pages/departamentoPesquisa.xhtml"
+							rendered="#{autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL' 
+							and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'}" />
+					
+					<p:menuitem value="Cargos" outcome="/pages/cargoPesquisa.xhtml" 
+							rendered="#{autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL' 
+							and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'}" />
+
+						<p:menuitem value="Funcionarios"
+							outcome="/pages/funcionarioPesquisa.xhtml"
+							rendered="#{autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL' 
+							and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL' 
+							and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'}" />
+
+					</p:submenu>
+				<p:submenu label="Vendas"  rendered="#{autenticacaoBean.funcionarioLogado.cargo != null}">
 				<p:menuitem value="Novo" outcome="/pages/vendaCadastro.xhtml"/>
 				</p:submenu>
 			</p:panelMenu>
