@@ -76,7 +76,7 @@
 			<h:panelGrid columns="5">
 				<p:commandButton value="Novo"
 					actionListener="#{fabricanteBean.novo}" update=":FormInBD:PnInBD"
-					rendered="#{fabricanteBean.acao == 'Novo'}" />
+					rendered="#{fabricanteBean.acao == 'Novo' and autenticacaoBean.funcionarioLogado.cargo.descricao != 'Balconista'}" />
 
 				<p:commandButton value="Salvar"
 					actionListener="#{fabricanteBean.salvar}"

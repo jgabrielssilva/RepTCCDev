@@ -5,7 +5,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.sysbebidas.dao.FabricanteDAO;
+import br.com.sysbebidas.dao.FuncionarioDAO;
 import br.com.sysbebidas.domain.Fabricante;
+import br.com.sysbebidas.domain.Funcionario;
 
 public class FabricanteDAOTest {
 	
@@ -67,6 +69,16 @@ public class FabricanteDAOTest {
 		fab.setDescricao("MOTOROLA");
 		
 		dao.editar(fab);
+	}
+	
+	@Test
+	@Ignore
+	public void autenticar(){
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		
+		Funcionario funcionario = funcionarioDAO.autenticar("181.012.107-84", "gabriel");
+		
+		System.out.println("Funcionario:" + funcionario);
 	}
 }
 
