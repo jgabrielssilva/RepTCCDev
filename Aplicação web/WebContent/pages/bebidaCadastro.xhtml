@@ -43,6 +43,7 @@
 					value="#{bebidaBean.bebidaCadastro.preco}"
 					readonly="#{bebidaBean.acao == 'Excluir'}">
 					<f:validateBean />
+					<f:convertNumber />
 				</p:inputText>
 				
 								<p:outputLabel value="Quantidade:" />

@@ -45,7 +45,9 @@
 				</p:column>
 				
 				<p:column headerText="Preço" style="width: 10%" sortBy="#{bebida.preco}">
-					<h:outputText value="#{bebida.preco}" />
+					<h:outputText value="#{bebida.preco}" >
+					<f:convertNumber pattern="0.00" />
+					</h:outputText>
 				</p:column>
 				
 				<p:column headerText="Quantidade" style="width: 10%">
