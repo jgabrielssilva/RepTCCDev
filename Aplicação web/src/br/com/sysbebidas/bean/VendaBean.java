@@ -17,6 +17,7 @@ import br.com.sysbebidas.domain.Bebida;
 import br.com.sysbebidas.domain.Funcionario;
 import br.com.sysbebidas.domain.Item;
 import br.com.sysbebidas.domain.Venda;
+import br.com.sysbebidas.filter.VendaFilter;
 import br.com.sysbebidas.util.FacesUtil;
 
 @ManagedBean
@@ -31,9 +32,11 @@ public class VendaBean {
 	
 	private List<Item> listaItens;
 	
-	
 	@ManagedProperty(value ="#{autenticacaoBean}")
 	private AutenticacaoBean autenticacaoBean;
+	
+	private VendaFilter filtro;
+	private List<Venda> listaVendasFiltrados;
 
 	public List<Bebida> getListaBebidas() {
 		return listaBebidas;
@@ -50,6 +53,18 @@ public class VendaBean {
 	public void setListaBebidasFiltrados(List<Bebida> listaBebidasFiltrados) {
 		this.listaBebidasFiltrados = listaBebidasFiltrados;
 	}
+	
+	public VendaFilter getFiltro() {
+		if(filtro == null){
+			filtro = new VendaFilter();
+		}
+		return filtro;
+	}
+	
+	public void setFiltro(VendaFilter filtro) {
+		this.filtro = filtro;
+	}
+	
 	
 	public Venda getVendaCadastro() {
 		if(vendaCadastro == null){
@@ -80,6 +95,14 @@ public class VendaBean {
 	
 	public void setAutenticacaoBean(AutenticacaoBean autenticacaoBean) {
 		this.autenticacaoBean = autenticacaoBean;
+	}
+	
+	public List<Venda> getListaVendasFiltrados() {
+		return listaVendasFiltrados;
+	}
+	
+	public void setListaVendasFiltrados(List<Venda> listaVendasFiltrados) {
+		this.listaVendasFiltrados = listaVendasFiltrados;
 	}
 	
 	public void carregarBebidas() {
@@ -172,6 +195,20 @@ public class VendaBean {
 			FacesUtil.adicionarMsgInfo("Venda salva com sucesso" );
 		} catch (RuntimeException ex) {
 			FacesUtil.adicionarMsgErro("Erro ao tentar salvar a venda:" + ex.getMessage());
+		}
+	}
+	
+	public void buscar(){
+		try {
+			VendaDAO vendaDAO = new VendaDAO();
+			listaVendasFiltrados = vendaDAO.buscar(filtro);
+			
+			for(Venda venda : listaVendasFiltrados){
+				System.out.println(venda);
+			}
+			
+		} catch (RuntimeException ex) {
+			FacesUtil.adicionarMsgErro("Erro ao tentar buscar venda:" + ex.getMessage());
 		}
 	}
 }

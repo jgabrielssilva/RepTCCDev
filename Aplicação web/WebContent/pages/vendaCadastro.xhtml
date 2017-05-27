@@ -41,7 +41,9 @@
 				</p:column>
 				
 				<p:column headerText="Preço" style="width: 10%" sortBy="#{bebida.preco}">
-					<h:outputText value="#{bebida.preco}" />
+					<h:outputText value="#{bebida.preco}">
+										<f:convertNumber pattern="0.00" />
+					</h:outputText>
 				</p:column>
 				
 				<p:column headerText="Quantidade" style="width: 10%">
@@ -96,7 +98,9 @@
 				</p:column>
 				
 				<p:column headerText="Valor Parcial" style="width: 10%" >
-					<h:outputText value="#{item.valor}" />
+					<h:outputText value="#{item.valor}">
+										<f:convertNumber pattern="0.00"/>
+					</h:outputText>
 				</p:column>
 				
 				
@@ -108,16 +112,17 @@
 			</p:dataTable>
 
 	<p:separator />
-			<h:panelGrid columns="2">
-		<h:outputText id="TxtValorTotal"  
-		value=" Valor Toral:  #{vendaBean.vendaCadastro.valor}" />		
-			<p:commandButton value="Finalizar Venda" 
-			actionListener="#{vendaBean.carregarDadosVenda}"
-			oncomplete="PF('wvDlgInVenda').show();" 
-			update=":Form3:TblItens3" />
-			
+			<h:panelGrid columns="3">
+				<h:outputText value=" Valor Toral:" />
+				<h:outputText id="TxtValorTotal"
+					value="#{vendaBean.vendaCadastro.valor}">
+					<f:convertNumber pattern="0.00"/>
+				</h:outputText>
+				<p:commandButton value="Finalizar Venda"
+					actionListener="#{vendaBean.carregarDadosVenda}"
+					oncomplete="PF('wvDlgInVenda').show();" update=":Form3:TblItens3" />
 			</h:panelGrid>
-			</h:form>
+		</h:form>
 
 
 		<p:dialog closable="true" draggable="true" modal="true" 
@@ -138,7 +143,9 @@
 			<h:outputText value="#{vendaBean.vendaCadastro.funcionario.nome}" />
 			
 			<h:outputText value="Valor Total:" />
-			<h:outputText value="#{vendaBean.vendaCadastro.valor}" />
+			<h:outputText value="#{vendaBean.vendaCadastro.valor}">
+								<f:convertNumber pattern="0.00" />
+					</h:outputText>
 			</h:panelGrid>
 			
 			<h:panelGrid columns="2">

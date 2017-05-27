@@ -1,15 +1,17 @@
 package br.com.sysbebidas.test;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
-
 import br.com.sysbebidas.dao.FuncionarioDAO;
 import br.com.sysbebidas.dao.VendaDAO;
 import br.com.sysbebidas.domain.Funcionario;
 import br.com.sysbebidas.domain.Venda;
+import br.com.sysbebidas.filter.VendaFilter;
 
 
 
@@ -73,5 +75,24 @@ public class VendaDAOTest {
 		venda.setFuncionario(funcionario);
 
 		vendaDAO.editar(venda);
+	}
+	
+
+	@Test
+	@Ignore
+	public void buscar() throws ParseException{
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		
+		VendaFilter filtro = new VendaFilter();
+		filtro.setDataInicial(formato.parse("20/05/2017"));
+		filtro.setDataFinal(formato.parse("26/05/2017"));
+
+		
+		VendaDAO vendaDAO = new VendaDAO();
+		List<Venda> vendas = vendaDAO.buscar(filtro);
+		
+		for(Venda venda : vendas){
+			System.out.println(venda);
+		}
 	}
 }
