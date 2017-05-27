@@ -46,7 +46,9 @@
 				
 				<p:column headerText="Piso Salarial" style="width: 10%" filterBy="#{cargo.pisosalarial}"
 					sortBy="#{cargo.pisosalarial}">
-					<h:outputText value="#{cargo.pisosalarial}" />
+					<h:outputText value="#{cargo.pisosalarial}">
+										<f:convertNumber pattern="0.00" />
+				</h:outputText>
 				</p:column>
 				
 				<p:column headerText="Departamento" 
