@@ -7,6 +7,6 @@
 
 
 <lifecycle>
-<phase-listener>br.com.sysbebidas.util.AutenticacaoPhaseListener</phase-listener>
+<phase-listener>br.com.sysbebidas.util.AuthenticationPhaseListener</phase-listener>
  </lifecycle>
 </faces-config>

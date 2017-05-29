@@ -1,86 +1,83 @@
 package br.com.sysbebidas.test;
 
 import java.util.List;
-
 import org.junit.Ignore;
 import org.junit.Test;
-
 import br.com.sysbebidas.dao.CargoDAO;
 import br.com.sysbebidas.dao.FuncionarioDAO;
 import br.com.sysbebidas.domain.Cargo;
 import br.com.sysbebidas.domain.Funcionario;
 
-
 public class FuncionarioDAOTest {
-	
+
 	@Test
 	@Ignore
-
 	public void salvar() {
 		CargoDAO cargoDAO = new CargoDAO();
-		Cargo cargo = cargoDAO.buscarPorCodigo(5L);
+		Cargo cargo = cargoDAO.buscarPorCodigo(1L);
 
-		Funcionario fun1 = new Funcionario();
-		fun1.setCpf("688.748.339-29");
-		fun1.setNome("lala lala");
-		fun1.setSenha("en5897799");
-		
-		fun1.setCargo(cargo);
-		
+		Funcionario funcionario = new Funcionario();
+		funcionario.setCpf("111.111.111-11");
+		funcionario.setNome("TesteFuncionarioSalvar");
+		funcionario.setSenha("111111");
+		funcionario.setCargo(cargo);
 
-		FuncionarioDAO dao = new FuncionarioDAO();
-
-		dao.salvar(fun1);
-
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		funcionarioDAO.salvar(funcionario);
 	}
 
 	@Test
 	@Ignore
 	public void listar() {
-		FuncionarioDAO dao = new FuncionarioDAO();
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
-		List<Funcionario> funcionarios = dao.listar();
+		List<Funcionario> listafuncionarios = funcionarioDAO.listar();
 
-		System.out.println(funcionarios);
+		System.out.println(listafuncionarios);
 	}
 
 	@Test
 	@Ignore
 	public void buscarPorCodigo() {
-		FuncionarioDAO dao = new FuncionarioDAO();
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
-		Funcionario fun1 = dao.buscarPorCodigo(2L);
+		Funcionario funcionario = funcionarioDAO.buscarPorCodigo(1L);
 
-
-		System.out.println(fun1);
-
+		System.out.println(funcionario);
 	}
 
 	@Test
 	@Ignore
 	public void excluir() {
-		FuncionarioDAO dao = new FuncionarioDAO();
-		Funcionario fun = dao.buscarPorCodigo(7L);
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		Funcionario funcionario = funcionarioDAO.buscarPorCodigo(7L);
 
-		dao.excluir(fun);
+		funcionarioDAO.excluir(funcionario);
 	}
 
 	@Test
 	@Ignore
 	public void editar() {
-		FuncionarioDAO dao = new FuncionarioDAO();
-		Funcionario fun = dao.buscarPorCodigo(5L);
-		
-		fun.setCpf("444.444.444-44");
-	
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		Funcionario funcionario = funcionarioDAO.buscarPorCodigo(1L);
+
+		funcionario.setCpf("933.172.694-56");
 		CargoDAO cargoDAO = new CargoDAO();
-		Cargo cargo = cargoDAO.buscarPorCodigo(9L);
-		fun.setCargo(cargo);
-	
-		fun.setNome("PAULO MIRANDA");
-		fun.setSenha("for44fqqqqq");
-		
-		dao.editar(fun);
+		Cargo cargo = cargoDAO.buscarPorCodigo(1L);
+		funcionario.setCargo(cargo);
+		funcionario.setNome("TesteFuncionarioEditar");
+		funcionario.setSenha("111111");
+
+		funcionarioDAO.editar(funcionario);
 	}
-	
+
+	@Test
+	@Ignore
+	public void autenticar() {
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
+		Funcionario funcionario = funcionarioDAO.autenticar("181.012.107-84", "52c69e3a57331081823331c4e69d3f2e");
+
+		System.out.println("Funcionario:" + funcionario);
+	}
 }

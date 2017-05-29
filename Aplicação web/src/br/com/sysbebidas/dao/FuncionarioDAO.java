@@ -4,12 +4,11 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import br.com.sysbebidas.domain.Funcionario;
 import br.com.sysbebidas.util.HibernateUtil;
 
 public class FuncionarioDAO {
-	
+
 	public void salvar(Funcionario funcionario) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
@@ -27,7 +26,7 @@ public class FuncionarioDAO {
 			sessao.close();
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 
 	public List<Funcionario> listar() {
@@ -97,7 +96,7 @@ public class FuncionarioDAO {
 		}
 	}
 
-	public Funcionario autenticar(String cpf, String senha){
+	public Funcionario autenticar(String cpf, String senha) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Funcionario funcionario = null;
 
@@ -105,7 +104,7 @@ public class FuncionarioDAO {
 			Query consulta = sessao.getNamedQuery("Funcionario.autenticar");
 			consulta.setString("cpf", cpf);
 			consulta.setString("senha", senha);
-			
+
 			funcionario = (Funcionario) consulta.uniqueResult();
 		} catch (RuntimeException ex) {
 			throw ex;

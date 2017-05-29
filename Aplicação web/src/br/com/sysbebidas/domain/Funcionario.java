@@ -1,9 +1,6 @@
 package br.com.sysbebidas.domain;
 
-
-
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,47 +19,44 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.br.CPF;
 
-
 @Entity
 @Table(name = "tbl_funcionarios")
 
-@NamedQueries({ 
-	@NamedQuery(name = "Funcionario.listar", query = "SELECT funcionario FROM Funcionario funcionario"),
-	@NamedQuery(name = "Funcionario.buscarPorCodigo", query = "SELECT funcionario FROM Funcionario funcionario WHERE funcionario.codigo = :codigo"), 
-    @NamedQuery(name = "Funcionario.autenticar", query = "SELECT funcionario FROM Funcionario funcionario WHERE funcionario.cpf = :cpf AND funcionario.senha = :senha")
-})
+@NamedQueries({ @NamedQuery(name = "Funcionario.listar", query = "SELECT funcionario FROM Funcionario funcionario"),
+		@NamedQuery(name = "Funcionario.buscarPorCodigo", query = "SELECT funcionario FROM Funcionario funcionario WHERE funcionario.codigo = :codigo"),
+		@NamedQuery(name = "Funcionario.autenticar", query = "SELECT funcionario FROM Funcionario funcionario WHERE funcionario.cpf = :cpf AND funcionario.senha = :senha") })
 
 public class Funcionario {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "fun_codigo")
 	private Long codigo;
-	
-	@NotEmpty(message ="O campo Nome é obrigatório")
+
+	@NotEmpty(message = "O campo Nome é obrigatório")
 	@Column(name = "fun_nome", length = 50, nullable = false)
 	private String nome;
-	
+
 	@CPF(message = "O CPF informado é inválido")
 	@Column(name = "fun_cpf", length = 14, nullable = false, unique = true)
 	private String cpf;
 
-	@NotEmpty(message ="O campo Senha é obrigatório")
+	@NotEmpty(message = "O campo Senha é obrigatório")
 	@Size(min = 5, max = 50, message = "Tamanho inválido para o campo senha (6 - 8)")
 	@Column(name = "fun_senha", length = 32, nullable = false)
 	private String senha;
 
-	@NotNull(message ="O campo Cargo é obrigatório")
+	@NotNull(message = "O campo Cargo é obrigatório")
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tbl_cargos_car_codigo", referencedColumnName = "car_codigo", nullable = false)
 	private Cargo cargo;
 
-	@NotNull(message ="O campo Data de Nascimento é obrigatório")
+	@NotNull(message = "O campo Data de Nascimento é obrigatório")
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "fun_datanascimento", nullable = false)
 	private Date datanascimento;
-	
-	@NotNull(message ="O campo Admissão é obrigatório")
+
+	@NotNull(message = "O campo Admissão é obrigatório")
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "fun_admissao", nullable = false)
 	private Date admissao;
@@ -153,9 +147,4 @@ public class Funcionario {
 			return false;
 		return true;
 	}
-
-  
-	
-	
-	
 }

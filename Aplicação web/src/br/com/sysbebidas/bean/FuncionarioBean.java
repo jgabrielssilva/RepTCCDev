@@ -3,9 +3,7 @@ package br.com.sysbebidas.bean;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
 import org.apache.commons.codec.digest.DigestUtils;
-
 import br.com.sysbebidas.dao.CargoDAO;
 import br.com.sysbebidas.dao.FuncionarioDAO;
 import br.com.sysbebidas.domain.Cargo;
@@ -75,15 +73,12 @@ public class FuncionarioBean {
 		this.listaCargos = listaCargos;
 	}
 
-	
-	
-	
 	public void novo() {
 		funcionarioCadastro = new Funcionario();
 	}
 
 	public void salvar() {
-		try {
+		try { 
 			FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 			funcionarioCadastro.setSenha(DigestUtils.md5Hex(funcionarioCadastro.getSenha()));
 			funcionarioDAO.salvar(funcionarioCadastro);
@@ -92,7 +87,7 @@ public class FuncionarioBean {
 
 			FacesUtil.adicionarMsgInfo("Funcionario salvo com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar incluir funcionario:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar incluir funcionario" + ex.getMessage());
 		}
 	}
 
@@ -101,7 +96,7 @@ public class FuncionarioBean {
 			FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 			listaFuncionarios = funcionarioDAO.listar();
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar funcionarios:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar funcionarios" + ex.getMessage());
 		}
 	}
 
@@ -117,7 +112,7 @@ public class FuncionarioBean {
 			CargoDAO cargoDAO = new CargoDAO();
 			listaCargos = cargoDAO.listar();
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do funcionario:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do funcionario" + ex.getMessage());
 		}
 	}
 
@@ -128,7 +123,7 @@ public class FuncionarioBean {
 
 			FacesUtil.adicionarMsgInfo("Funcionario removido com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar remover funcionario:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar remover funcionario" + ex.getMessage());
 		}
 	}
 
@@ -140,7 +135,7 @@ public class FuncionarioBean {
 
 			FacesUtil.adicionarMsgInfo("Funcionario editado com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar editar funcionario:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar editar funcionario" + ex.getMessage());
 		}
 	}
 }
