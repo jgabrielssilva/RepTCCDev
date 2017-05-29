@@ -13,12 +13,13 @@
 		<f:metadata>
 			<f:viewParam name="funacao" value="#{funcionarioBean.acao}" />
 			<f:viewParam name="funcodigo" value="#{funcionarioBean.codigo}" />
-			<f:event listener="#{funcionarioBean.carregarCadastro}" type="preRenderView" />
+			<f:event listener="#{funcionarioBean.carregarCadastro}"
+				type="preRenderView" />
 		</f:metadata>
 	</ui:define>
 
 	<ui:define name="conteudo">
-	<h:form id="FormInBD" >
+		<h:form id="FormularioFuncionario">
 
 			<p:toolbar>
 				<f:facet name="left">
@@ -26,82 +27,75 @@
 				</f:facet>
 			</p:toolbar>
 
-			<h:panelGrid id="PnInBD" columns="2">
+			<h:panelGrid id="PainelFuncionario" columns="2">
 				<p:outputLabel value="Código:" />
-				<p:inputText size="10" readonly="true" value="#{funcionarioBean.funcionarioCadastro.codigo}" />
-
+				<p:inputText size="10" readonly="true"
+					value="#{funcionarioBean.funcionarioCadastro.codigo}" />
 				<p:outputLabel value="Nome:" />
-				<p:inputText maxlength="50" size="30" value="#{funcionarioBean.funcionarioCadastro.nome}" 
-				readonly="#{funcionarioBean.acao == 'Excluir'}"/>
-
-								<p:outputLabel value="CPF:" />
+				<p:inputText maxlength="50" size="30"
+					value="#{funcionarioBean.funcionarioCadastro.nome}"
+					readonly="#{funcionarioBean.acao == 'Excluir'}" />
+				<p:outputLabel value="CPF:" />
 				<p:inputMask mask="999.999.999-99" size="15"
 					value="#{funcionarioBean.funcionarioCadastro.cpf}"
-					readonly="#{funcionarioBean.acao == 'Excluir'}"  >
-						<f:validateBean />
+					readonly="#{funcionarioBean.acao == 'Excluir'}">
+					<f:validateBean />
 				</p:inputMask>
-				
-				
-				
-				
-
 				<p:outputLabel value="Cargo:" />
-				<p:selectOneMenu value="#{funcionarioBean.funcionarioCadastro.cargo}" 
-				converter="cargoConverter"  disabled="#{funcionarioBean.acao == 'Excluir'}" >
-				<f:selectItem itemValue="" itemLabel="Selecione o cargo" />
-				<f:selectItems value="#{funcionarioBean.listaCargos}"
-				var="cargo" itemValue="#{cargo}" itemLabel="#{cargo.descricao}" />
-				<f:validateBean />
+				<p:selectOneMenu
+					value="#{funcionarioBean.funcionarioCadastro.cargo}"
+					converter="cargoConverter"
+					disabled="#{funcionarioBean.acao == 'Excluir'}">
+					<f:selectItem itemValue="" itemLabel="Selecione o cargo" />
+					<f:selectItems value="#{funcionarioBean.listaCargos}" var="cargo"
+						itemValue="#{cargo}" itemLabel="#{cargo.descricao}" />
+					<f:validateBean />
 				</p:selectOneMenu>
-				
-				
-				
-				
-				
-				
-				
-				
-				
 				<p:outputLabel value="Data de Nascimento:" />
-				<p:calendar value="#{funcionarioBean.funcionarioCadastro.datanascimento}" size="15" 
-				disabled="#{funcionarioBean.acao == 'Excluir'}" />
-				
-								<p:outputLabel value="Admissão:" />
-				<p:calendar value="#{funcionarioBean.funcionarioCadastro.admissao}" size="15" 
-				disabled="#{funcionarioBean.acao == 'Excluir'}"/>
-
+				<p:calendar
+					value="#{funcionarioBean.funcionarioCadastro.datanascimento}"
+					size="15" disabled="#{funcionarioBean.acao == 'Excluir'}" />
+				<p:outputLabel value="Admissão:" />
+				<p:calendar value="#{funcionarioBean.funcionarioCadastro.admissao}"
+					size="15" disabled="#{funcionarioBean.acao == 'Excluir'}" />
 				<p:outputLabel value="Senha:" />
-				<p:password maxlength="8" size="15" 
-				value="#{funcionarioBean.funcionarioCadastro.senha}" 
-				readonly="#{funcionarioBean.acao == 'Excluir'}"  redisplay="true" >
-				<f:validateBean />
+				<p:password maxlength="8" size="15"
+					value="#{funcionarioBean.funcionarioCadastro.senha}"
+					readonly="#{funcionarioBean.acao == 'Excluir'}">
+					<f:validateBean />
 				</p:password>
-				
 			</h:panelGrid>
 
 			<h:panelGrid columns="5">
-				<p:commandButton value="Novo"
-					actionListener="#{funcionarioBean.novo}" update=":FormInBD:PnInBD"
-					rendered="#{funcionarioBean.acao == 'Novo'}" />
-
+				<p:commandButton value="Limpar"
+					actionListener="#{funcionarioBean.novo}"
+					update=":FormularioFuncionario:PainelFuncionario"
+					rendered="#{funcionarioBean.acao == 'Novo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'}" />
 				<p:commandButton value="Salvar"
 					actionListener="#{funcionarioBean.salvar}"
-					update=":msgGlobal :FormInBD:PnInBD"
-					rendered="#{funcionarioBean.acao == 'Novo'}" />
-
+					update=":msgGlobal :FormularioFuncionario:PainelFuncionario"
+					rendered="#{funcionarioBean.acao == 'Novo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'}" />
 				<p:commandButton value="Excluir"
 					actionListener="#{funcionarioBean.excluir}" update=":msgGlobal"
-					rendered="#{funcionarioBean.acao == 'Excluir'}" />
-
+					rendered="#{funcionarioBean.acao == 'Excluir'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'}" />
 				<p:commandButton value="Editar"
 					actionListener="#{funcionarioBean.editar}" update=":msgGlobal"
-					rendered="#{funcionarioBean.acao == 'Editar'}" />
-
+					rendered="#{funcionarioBean.acao == 'Editar'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'}" />
 				<p:button value="Voltar" outcome="/pages/funcionarioPesquisa.xhtml" />
-
-			</h:panelGrid>	
-</h:form>
-
+			</h:panelGrid>
+		</h:form>
 	</ui:define>
 </ui:composition>
 </html>

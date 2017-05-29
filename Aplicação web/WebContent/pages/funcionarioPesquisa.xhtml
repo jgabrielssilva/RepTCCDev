@@ -28,45 +28,42 @@
 				value="#{funcionarioBean.listaFuncionarios}"
 				filteredValue="#{funcionarioBean.listaFuncionariosFiltrados}"
 				var="funcionario" paginator="true" rows="10">
-
 				<f:facet name="footer">
 					<p:button value="Novo" outcome="/pages/funcionarioCadastro.xhtml">
 						<f:param name="funacao" value="Novo" />
 					</p:button>
 				</f:facet>
-
 				<p:column headerText="Código" style="width: 8%">
 					<h:outputText value="#{funcionario.codigo}" />
 				</p:column>
-
 				<p:column headerText="Nome" filterBy="#{funcionario.nome}"
 					sortBy="#{funcionario.nome}">
 					<h:outputText value="#{funcionario.nome}" />
 				</p:column>
-				
-								<p:column headerText="CPF" style="width: 11%" filterBy="#{funcionario.cpf}"
-					sortBy="#{funcionario.cpf}">
+				<p:column headerText="CPF" style="width: 11%"
+					filterBy="#{funcionario.cpf}" sortBy="#{funcionario.cpf}">
 					<h:outputText value="#{funcionario.cpf}" />
 				</p:column>
-	
-				
-								<p:column headerText="Cargo" style="width: 15%"
-				filterBy="#{funcionario.cargo.descricao}" 
-				sortBy="#{funcionario.cargo.descricao}" >
+				<p:column headerText="Cargo" style="width: 15%"
+					filterBy="#{funcionario.cargo.descricao}"
+					sortBy="#{funcionario.cargo.descricao}">
 					<h:outputText value="#{funcionario.cargo.descricao}" />
 				</p:column>
-				
-				<p:column headerText="Data de Nascimento" style="width: 15%" sortBy="#{funcionario.datanascimento}" >
-					<h:outputText value="#{funcionario.datanascimento}" />
+				<p:column headerText="Data de Nascimento" style="width: 15%"
+					sortBy="#{funcionario.datanascimento}">
+					<h:outputText value="#{funcionario.datanascimento}">
+						<f:convertDateTime />
+					</h:outputText>
 				</p:column>
-				
-					<p:column headerText="Admissão" style="width: 11%" sortBy="#{funcionario.admissao}" >
-					<h:outputText value="#{funcionario.admissao}" />
+				<p:column headerText="Admissão" style="width: 11%"
+					sortBy="#{funcionario.admissao}">
+					<h:outputText value="#{funcionario.admissao}">
+						<f:convertDateTime />
+					</h:outputText>
 				</p:column>
-				
-				
 				<p:column headerText="Opções" style="width: 13%">
-					<p:button value="Excluir" outcome="/pages/funcionarioCadastro.xhtml">
+					<p:button value="Excluir"
+						outcome="/pages/funcionarioCadastro.xhtml">
 						<f:param name="funacao" value="Excluir" />
 						<f:param name="funcodigo" value="#{funcionario.codigo}" />
 					</p:button>
@@ -75,7 +72,6 @@
 						<f:param name="funcodigo" value="#{funcionario.codigo}" />
 					</p:button>
 				</p:column>
-
 			</p:dataTable>
 		</h:form>
 	</ui:define>
