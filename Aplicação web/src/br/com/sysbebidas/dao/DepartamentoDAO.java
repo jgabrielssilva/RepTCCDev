@@ -4,12 +4,11 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import br.com.sysbebidas.domain.Departamento;
 import br.com.sysbebidas.util.HibernateUtil;
 
 public class DepartamentoDAO {
-	
+
 	public void salvar(Departamento departamento) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
@@ -44,7 +43,7 @@ public class DepartamentoDAO {
 		}
 		return departamentos;
 	}
-	
+
 	public Departamento buscarPorCodigo(Long codigo) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Departamento departamento = null;
@@ -60,7 +59,7 @@ public class DepartamentoDAO {
 		}
 		return departamento;
 	}
-	
+
 	public void excluir(Departamento departamento) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
@@ -78,7 +77,7 @@ public class DepartamentoDAO {
 			sessao.close();
 		}
 	}
-	
+
 	public void editar(Departamento departamento) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;

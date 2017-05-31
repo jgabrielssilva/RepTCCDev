@@ -13,12 +13,13 @@
 		<f:metadata>
 			<f:viewParam name="depacao" value="#{departamentoBean.acao}" />
 			<f:viewParam name="depcodigo" value="#{departamentoBean.codigo}" />
-			<f:event listener="#{departamentoBean.carregarCadastro}" type="preRenderView" />
+			<f:event listener="#{departamentoBean.carregarCadastro}"
+				type="preRenderView" />
 		</f:metadata>
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<h:form id="FormInBD">
+		<h:form id="FormularioDepartamento">
 
 			<p:toolbar>
 				<f:facet name="left">
@@ -26,39 +27,94 @@
 				</f:facet>
 			</p:toolbar>
 
-			<h:panelGrid id="PnInBD" columns="2">
+			<h:panelGrid id="PainelDepartamento" columns="2">
 				<p:outputLabel value="Código:" />
 				<p:inputText size="10" readonly="true"
 					value="#{departamentoBean.departamentoCadastro.codigo}" />
-
 				<p:outputLabel value="Descrição:" />
 				<p:inputText maxlength="50" size="30"
 					value="#{departamentoBean.departamentoCadastro.descricao}"
 					readonly="#{departamentoBean.acao == 'Excluir'}">
 					<f:validateBean />
-				</p:inputText>		
+				</p:inputText>
 			</h:panelGrid>
 
 			<h:panelGrid columns="5">
-				<p:commandButton value="Novo"
-					actionListener="#{departamentoBean.novo}" update=":FormInBD:PnInBD"
-					rendered="#{departamentoBean.acao == 'Novo'}" />
-
+				<p:commandButton value="Limpar"
+					actionListener="#{departamentoBean.novo}"
+					update=":FormularioDepartamento:PainelDepartamento"
+					rendered="#{departamentoBean.acao == 'Novo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Comercial'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'comercial'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Compras'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Negócios' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADM'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'adm'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:commandButton value="Salvar"
 					actionListener="#{departamentoBean.salvar}"
-					update=":msgGlobal :FormInBD:PnInBD"
-					rendered="#{departamentoBean.acao == 'Novo'}" />
-
+					update=":msgGlobal :FormularioDepartamento:PainelDepartamento"
+					rendered="#{departamentoBean.acao == 'Novo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Comercial'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'comercial'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Compras'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Negócios' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADM'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'adm'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:commandButton value="Excluir"
 					actionListener="#{departamentoBean.excluir}" update=":msgGlobal"
-					rendered="#{departamentoBean.acao == 'Excluir'}" />
-
+					rendered="#{departamentoBean.acao == 'Excluir'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Comercial'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'comercial'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Compras'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Negócios' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADM'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'adm'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:commandButton value="Editar"
 					actionListener="#{departamentoBean.editar}" update=":msgGlobal"
-					rendered="#{departamentoBean.acao == 'Editar'}" />
-
+					rendered="#{departamentoBean.acao == 'Editar'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'COMERCIAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Comercial'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'comercial'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Compras'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Negócios' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADM'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'adm'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:button value="Voltar" outcome="/pages/departamentoPesquisa.xhtml" />
-
 			</h:panelGrid>
 		</h:form>
 	</ui:define>

@@ -3,7 +3,6 @@ package br.com.sysbebidas.bean;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
 import br.com.sysbebidas.dao.DepartamentoDAO;
 import br.com.sysbebidas.domain.Departamento;
 import br.com.sysbebidas.util.FacesUtil;
@@ -12,11 +11,11 @@ import br.com.sysbebidas.util.FacesUtil;
 @ViewScoped
 public class DepartamentoBean {
 	private Departamento departamentoCadastro;
-	
+
 	private List<Departamento> listaDepartamentos;
-	
+
 	private List<Departamento> listaDepartamentosFiltrados;
-	
+
 	private String acao;
 	private Long codigo;
 
@@ -28,7 +27,6 @@ public class DepartamentoBean {
 	public void setDepartamentoCadastro(Departamento departamentoCadastro) {
 		this.departamentoCadastro = departamentoCadastro;
 	}
-	
 
 	public List<Departamento> getListaDepartamentos() {
 		return listaDepartamentos;
@@ -38,7 +36,6 @@ public class DepartamentoBean {
 		this.listaDepartamentos = listaDepartamentos;
 	}
 
-	
 	public List<Departamento> getListaDepartamentosFiltrados() {
 		return listaDepartamentosFiltrados;
 	}
@@ -46,27 +43,23 @@ public class DepartamentoBean {
 	public void setListaDepartamentosFiltrados(List<Departamento> listaDepartamentosFiltrados) {
 		this.listaDepartamentosFiltrados = listaDepartamentosFiltrados;
 	}
-	
 
 	public String getAcao() {
 		return acao;
 	}
-	
+
 	public void setAcao(String acao) {
 		this.acao = acao;
 	}
-	
+
 	public Long getCodigo() {
 		return codigo;
 	}
-	
+
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-	
-	
-	
-	
+
 	public void novo() {
 		departamentoCadastro = new Departamento();
 	}
@@ -80,7 +73,7 @@ public class DepartamentoBean {
 
 			FacesUtil.adicionarMsgInfo("Departamento salvo com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar incluir departamento:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar incluir departamento" + ex.getMessage());
 		}
 	}
 
@@ -89,7 +82,7 @@ public class DepartamentoBean {
 			DepartamentoDAO departamentoDAO = new DepartamentoDAO();
 			listaDepartamentos = departamentoDAO.listar();
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar departamento:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar departamento" + ex.getMessage());
 		}
 	}
 
@@ -102,7 +95,7 @@ public class DepartamentoBean {
 				departamentoCadastro = new Departamento();
 			}
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do departamento:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do departamento" + ex.getMessage());
 		}
 	}
 
@@ -113,7 +106,7 @@ public class DepartamentoBean {
 
 			FacesUtil.adicionarMsgInfo("Departamento removido com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar remover departamento:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar remover departamento" + ex.getMessage());
 		}
 	}
 
@@ -124,7 +117,7 @@ public class DepartamentoBean {
 
 			FacesUtil.adicionarMsgInfo("Departamento editado com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar editar departamento:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar editar departamento" + ex.getMessage());
 		}
 	}
 }

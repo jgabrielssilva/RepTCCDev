@@ -1,4 +1,5 @@
 package br.com.sysbebidas.domain;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -73,7 +74,4 @@ public class Departamento {
 			return false;
 		return true;
 	}
-
-	
-	
 }

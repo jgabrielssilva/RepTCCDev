@@ -3,7 +3,6 @@ package br.com.sysbebidas.test;
 import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
-
 import br.com.sysbebidas.dao.DepartamentoDAO;
 import br.com.sysbebidas.domain.Departamento;
 
@@ -12,61 +11,55 @@ public class DepartamentoDAOTest {
 	@Test
     @Ignore
 	public void salvar(){
+		Departamento departamento1 = new Departamento();
+		departamento1.setDescricao("TesteDepartamentoSalvar1");
 		
-		Departamento dep1 = new Departamento();
-		dep1.setDescricao("VINHO");
+		Departamento departamento2 = new Departamento();
+		departamento2.setDescricao("TesteDepartamentoSalvar2");
 		
-		Departamento dep2 = new Departamento();
-		dep2.setDescricao("REFRIGERANTE");
-		
-		Departamento dep3 = new Departamento();
-		dep3.setDescricao("CERVEJA");
-			
-		DepartamentoDAO dao = new DepartamentoDAO();
-		dao.salvar(dep1);
-		dao.salvar(dep2);
-		dao.salvar(dep3);
+		DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+		departamentoDAO.salvar(departamento1);
+		departamentoDAO.salvar(departamento2);
 	}
 		
 	@Test
 	@Ignore
 	public void listar() {
-		DepartamentoDAO dao = new DepartamentoDAO();
+		DepartamentoDAO departamentoDAO = new DepartamentoDAO();
 
-		List<Departamento> departamentos = dao.listar();
+		List<Departamento> listadepartamentos = departamentoDAO.listar();
 
-		System.out.println(departamentos);
+		System.out.println(listadepartamentos);
 	}
 
 	@Test
 	@Ignore
 	public void buscarPorCodigo() {
-		DepartamentoDAO dao = new DepartamentoDAO();
+		DepartamentoDAO departamentoDAO = new DepartamentoDAO();
 
-		Departamento dep1 = dao.buscarPorCodigo(9L);
+		Departamento departamento = departamentoDAO.buscarPorCodigo(1L);
 
 
-		System.out.println(dep1);
-
+		System.out.println(departamento);
 	}
 
 	@Test
 	@Ignore
 	public void excluir() {
-		DepartamentoDAO dao = new DepartamentoDAO();
-		Departamento dep = dao.buscarPorCodigo(14L);
+		DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+		Departamento departamento = departamentoDAO.buscarPorCodigo(1L);
 
-		dao.excluir(dep);
+		departamentoDAO.excluir(departamento);
 	}
 
 	@Test
 	@Ignore
 	public void editar() {
-		DepartamentoDAO dao = new DepartamentoDAO();
-		Departamento dep = dao.buscarPorCodigo(12L);
-		dep.setDescricao("SUCO");
+		DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+		Departamento departamento = departamentoDAO.buscarPorCodigo(1L);
+		departamento.setDescricao("TesteDepartamentoEditar");
 		
-		dao.editar(dep);
+		departamentoDAO.editar(departamento);
 	}
 }
 

@@ -28,32 +28,31 @@
 				value="#{departamentoBean.listaDepartamentos}"
 				filteredValue="#{departamentoBean.listaDepartamentosFiltrados}"
 				var="departamento" paginator="true" rows="10">
-
 				<f:facet name="footer">
 					<p:button value="Novo" outcome="/pages/departamentoCadastro.xhtml">
 						<f:param name="depacao" value="Novo" />
 					</p:button>
 				</f:facet>
-
 				<p:column headerText="Código" style="width: 8%">
 					<h:outputText value="#{departamento.codigo}" />
 				</p:column>
-
-				<p:column headerText="Descrição" filterBy="#{departamento.descricao}"
+				<p:column headerText="Descrição"
+					filterBy="#{departamento.descricao}"
 					sortBy="#{departamentos.descricao}">
 					<h:outputText value="#{departamento.descricao}" />
 				</p:column>
 				<p:column headerText="Opções" style="width: 13%">
-					<p:button value="Excluir" outcome="/pages/departamentoCadastro.xhtml">
+					<p:button value="Excluir"
+						outcome="/pages/departamentoCadastro.xhtml">
 						<f:param name="depacao" value="Excluir" />
 						<f:param name="depcodigo" value="#{departamento.codigo}" />
 					</p:button>
-					<p:button value="Editar" outcome="/pages/departamentoCadastro.xhtml">
+					<p:button value="Editar"
+						outcome="/pages/departamentoCadastro.xhtml">
 						<f:param name="depacao" value="Editar" />
 						<f:param name="depcodigo" value="#{departamento.codigo}" />
 					</p:button>
 				</p:column>
-
 			</p:dataTable>
 		</h:form>
 	</ui:define>
