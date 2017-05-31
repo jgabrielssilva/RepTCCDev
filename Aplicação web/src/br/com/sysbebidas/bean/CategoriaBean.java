@@ -3,7 +3,6 @@ package br.com.sysbebidas.bean;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
 import br.com.sysbebidas.dao.CategoriaDAO;
 import br.com.sysbebidas.domain.Categoria;
 import br.com.sysbebidas.util.FacesUtil;
@@ -12,11 +11,11 @@ import br.com.sysbebidas.util.FacesUtil;
 @ViewScoped
 public class CategoriaBean {
 	private Categoria categoriaCadastro;
-	
+
 	private List<Categoria> listaCategorias;
-	
+
 	private List<Categoria> listaCategoriasFiltrados;
-	
+
 	private String acao;
 	private Long codigo;
 
@@ -28,7 +27,6 @@ public class CategoriaBean {
 	public void setCategoriaCadastro(Categoria categoriaCadastro) {
 		this.categoriaCadastro = categoriaCadastro;
 	}
-	
 
 	public List<Categoria> getListaCategorias() {
 		return listaCategorias;
@@ -38,7 +36,6 @@ public class CategoriaBean {
 		this.listaCategorias = listaCategorias;
 	}
 
-	
 	public List<Categoria> getListaCategoriasFiltrados() {
 		return listaCategoriasFiltrados;
 	}
@@ -46,27 +43,23 @@ public class CategoriaBean {
 	public void setListaCategoriasFiltrados(List<Categoria> listaCategoriasFiltrados) {
 		this.listaCategoriasFiltrados = listaCategoriasFiltrados;
 	}
-	
 
 	public String getAcao() {
 		return acao;
 	}
-	
+
 	public void setAcao(String acao) {
 		this.acao = acao;
 	}
-	
+
 	public Long getCodigo() {
 		return codigo;
 	}
-	
+
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-	
-	
-	
-	
+
 	public void novo() {
 		categoriaCadastro = new Categoria();
 	}
@@ -80,7 +73,7 @@ public class CategoriaBean {
 
 			FacesUtil.adicionarMsgInfo("Categoria salvo com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar incluir categoria:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar incluir categoria" + ex.getMessage());
 		}
 	}
 
@@ -89,7 +82,7 @@ public class CategoriaBean {
 			CategoriaDAO categoriaDAO = new CategoriaDAO();
 			listaCategorias = categoriaDAO.listar();
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar categorias:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar categorias" + ex.getMessage());
 		}
 	}
 
@@ -102,7 +95,7 @@ public class CategoriaBean {
 				categoriaCadastro = new Categoria();
 			}
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do categoria:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do categoria" + ex.getMessage());
 		}
 	}
 
@@ -113,7 +106,7 @@ public class CategoriaBean {
 
 			FacesUtil.adicionarMsgInfo("Categoria removido com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar remover categoria:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar remover categoria" + ex.getMessage());
 		}
 	}
 
@@ -124,7 +117,7 @@ public class CategoriaBean {
 
 			FacesUtil.adicionarMsgInfo("Categoria editado com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar editar categoria:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar editar categoria" + ex.getMessage());
 		}
 	}
 }

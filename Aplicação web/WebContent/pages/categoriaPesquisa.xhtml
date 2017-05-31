@@ -28,22 +28,18 @@
 				value="#{categoriaBean.listaCategorias}"
 				filteredValue="#{categoriaBean.listaCategoriasFiltrados}"
 				var="categoria" paginator="true" rows="10">
-
 				<f:facet name="footer">
 					<p:button value="Novo" outcome="/pages/categoriaCadastro.xhtml">
 						<f:param name="catacao" value="Novo" />
 					</p:button>
 				</f:facet>
-
 				<p:column headerText="Código" style="width: 8%">
 					<h:outputText value="#{categoria.codigo}" />
 				</p:column>
-
 				<p:column headerText="Descrição" filterBy="#{categoria.descricao}"
 					sortBy="#{categoria.descricao}">
 					<h:outputText value="#{categoria.descricao}" />
 				</p:column>
-
 				<p:column headerText="Opções" style="width: 13%">
 					<p:button value="Excluir" outcome="/pages/categoriaCadastro.xhtml">
 						<f:param name="catacao" value="Excluir" />
@@ -54,7 +50,6 @@
 						<f:param name="catcodigo" value="#{categoria.codigo}" />
 					</p:button>
 				</p:column>
-
 			</p:dataTable>
 		</h:form>
 	</ui:define>

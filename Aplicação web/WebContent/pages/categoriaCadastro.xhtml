@@ -13,12 +13,13 @@
 		<f:metadata>
 			<f:viewParam name="catacao" value="#{categoriaBean.acao}" />
 			<f:viewParam name="catcodigo" value="#{categoriaBean.codigo}" />
-			<f:event listener="#{categoriaBean.carregarCadastro}" type="preRenderView" />
+			<f:event listener="#{categoriaBean.carregarCadastro}"
+				type="preRenderView" />
 		</f:metadata>
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<h:form id="FormInBD">
+		<h:form id="FormularioCategoria">
 
 			<p:toolbar>
 				<f:facet name="left">
@@ -26,11 +27,10 @@
 				</f:facet>
 			</p:toolbar>
 
-			<h:panelGrid id="PnInBD" columns="2">
+			<h:panelGrid id="PainelCategoria" columns="2">
 				<p:outputLabel value="Código:" />
 				<p:inputText size="10" readonly="true"
 					value="#{categoriaBean.categoriaCadastro.codigo}" />
-
 				<p:outputLabel value="Descrição:" />
 				<p:inputText maxlength="50" size="30"
 					value="#{categoriaBean.categoriaCadastro.descricao}"
@@ -40,25 +40,80 @@
 			</h:panelGrid>
 
 			<h:panelGrid columns="5">
-				<p:commandButton value="Novo"
-					actionListener="#{categoriaBean.novo}" update=":FormInBD:PnInBD"
-					rendered="#{categoriaBean.acao == 'Novo'}" />
-
+				<p:commandButton value="Limpar" actionListener="#{categoriaBean.novo}"
+					update=":FormularioCategoria:PainelCategoria"
+					rendered="#{categoriaBean.acao == 'Novo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Pessoal' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'pessoal'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'RH'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'rh'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADM'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'adm'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:commandButton value="Salvar"
 					actionListener="#{categoriaBean.salvar}"
-					update=":msgGlobal :FormInBD:PnInBD"
-					rendered="#{categoriaBean.acao == 'Novo'}" />
-
+					update=":msgGlobal :FormularioCategoria:PainelCategoria"
+					rendered="#{categoriaBean.acao == 'Novo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Pessoal' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'pessoal'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'RH'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'rh'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADM'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'adm'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:commandButton value="Excluir"
 					actionListener="#{categoriaBean.excluir}" update=":msgGlobal"
-					rendered="#{categoriaBean.acao == 'Excluir'}" />
-
+					rendered="#{categoriaBean.acao == 'Excluir'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Pessoal' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'pessoal'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'RH'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'rh'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADM'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'adm'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:commandButton value="Editar"
 					actionListener="#{categoriaBean.editar}" update=":msgGlobal"
-					rendered="#{categoriaBean.acao == 'Editar'}" />
-
+					rendered="#{categoriaBean.acao == 'Editar'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Pessoal' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'pessoal'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'RH'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'rh'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADMINISTRATIVO'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'administrativo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'ADM'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'adm'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:button value="Voltar" outcome="/pages/categoriaPesquisa.xhtml" />
-
 			</h:panelGrid>
 		</h:form>
 	</ui:define>

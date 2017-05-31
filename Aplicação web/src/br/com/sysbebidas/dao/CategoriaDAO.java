@@ -4,12 +4,11 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import br.com.sysbebidas.domain.Categoria;
 import br.com.sysbebidas.util.HibernateUtil;
 
 public class CategoriaDAO {
-	
+
 	public void salvar(Categoria categoria) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
@@ -44,7 +43,7 @@ public class CategoriaDAO {
 		}
 		return categorias;
 	}
-	
+
 	public Categoria buscarPorCodigo(Long codigo) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Categoria categoria = null;
@@ -60,7 +59,7 @@ public class CategoriaDAO {
 		}
 		return categoria;
 	}
-	
+
 	public void excluir(Categoria categoria) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
@@ -78,7 +77,7 @@ public class CategoriaDAO {
 			sessao.close();
 		}
 	}
-	
+
 	public void editar(Categoria categoria) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
