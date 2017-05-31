@@ -4,12 +4,11 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import br.com.sysbebidas.domain.Fabricante;
 import br.com.sysbebidas.util.HibernateUtil;
 
 public class FabricanteDAO {
-	
+
 	public void salvar(Fabricante fabricante) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
@@ -44,7 +43,7 @@ public class FabricanteDAO {
 		}
 		return fabricantes;
 	}
-	
+
 	public Fabricante buscarPorCodigo(Long codigo) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Fabricante fabricante = null;
@@ -60,7 +59,7 @@ public class FabricanteDAO {
 		}
 		return fabricante;
 	}
-	
+
 	public void excluir(Fabricante fabricante) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
@@ -78,7 +77,7 @@ public class FabricanteDAO {
 			sessao.close();
 		}
 	}
-	
+
 	public void editar(Fabricante fabricante) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;

@@ -3,82 +3,58 @@ package br.com.sysbebidas.test;
 import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
-
 import br.com.sysbebidas.dao.FabricanteDAO;
-import br.com.sysbebidas.dao.FuncionarioDAO;
 import br.com.sysbebidas.domain.Fabricante;
-import br.com.sysbebidas.domain.Funcionario;
 
 public class FabricanteDAOTest {
-	
+
 	@Test
-    @Ignore
-	public void salvar(){
-		
-		Fabricante fab81 = new Fabricante();
-		fab81.setDescricao("LENOVO");
-		
-		Fabricante fab82 = new Fabricante();
-		fab82.setDescricao("SONY");
-		
-		Fabricante fab83 = new Fabricante();
-		fab83.setDescricao("INTEL");
-			
+	@Ignore
+	public void salvar() {
+		Fabricante fabricante = new Fabricante();
+		fabricante.setDescricao("TesteFabricanteSalvar");
+
 		FabricanteDAO dao = new FabricanteDAO();
-		dao.salvar(fab81);
-		dao.salvar(fab82);
-		dao.salvar(fab83);
+		dao.salvar(fabricante);
 	}
-		
+
 	@Test
 	@Ignore
 	public void listar() {
 		FabricanteDAO dao = new FabricanteDAO();
 
-		List<Fabricante> fabricantes = dao.listar();
+		List<Fabricante> listafabricantes = dao.listar();
 
-		System.out.println(fabricantes);
+		System.out.println(listafabricantes);
 	}
 
 	@Test
 	@Ignore
 	public void buscarPorCodigo() {
-		FabricanteDAO dao = new FabricanteDAO();
+		FabricanteDAO fabricanteDAO = new FabricanteDAO();
 
-		Fabricante fab1 = dao.buscarPorCodigo(9L);
+		Fabricante fabricante = fabricanteDAO.buscarPorCodigo(1L);
 
-
-		System.out.println(fab1);
-
+		System.out.println(fabricante);
 	}
 
 	@Test
 	@Ignore
 	public void excluir() {
-		FabricanteDAO dao = new FabricanteDAO();
-		Fabricante fab = dao.buscarPorCodigo(14L);
+		FabricanteDAO fabricanteDAO = new FabricanteDAO();
+		Fabricante fabricante = fabricanteDAO.buscarPorCodigo(1L);
 
-		dao.excluir(fab);
+		fabricanteDAO.excluir(fabricante);
 	}
 
 	@Test
 	@Ignore
 	public void editar() {
-		FabricanteDAO dao = new FabricanteDAO();
-		Fabricante fab = dao.buscarPorCodigo(12L);
-		fab.setDescricao("MOTOROLA");
-		
-		dao.editar(fab);
-	}
-	
-	@Test
-	@Ignore
-	public void autenticar(){
-		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-		
-		Funcionario funcionario = funcionarioDAO.autenticar("181.012.107-84", "gabriel");
-		
-		System.out.println("Funcionario:" + funcionario);
+		FabricanteDAO fabricanteDAO = new FabricanteDAO();
+		Fabricante fabricante = fabricanteDAO.buscarPorCodigo(1L);
+		fabricante.setDescricao("TesteFabricanteEditar");
+
+		fabricanteDAO.editar(fabricante);
 	}
 }
 

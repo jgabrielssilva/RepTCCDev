@@ -1,7 +1,6 @@
 package br.com.sysbebidas.domain;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,22 +33,22 @@ public class Fabricante {
 	@Size(min = 2, max = 50, message = "Tamanho de caracteres não respeitado. Aceito de 02 até 50 caracteres.")
 	@Column(name = "fab_descricao", length = 50, nullable = false)
 	private String descricao;
-	
+
 	@CNPJ(message = "O CNPJ informado é inválido")
 	@Column(name = "fab_cnpj", length = 14, nullable = false, unique = true)
 	private String cnpj;
-	
+
 	@NotEmpty(message = "O campo país é obrigatório")
 	@Size(min = 2, max = 50, message = "Tamanho de caracteres não respeitado. Aceito de 02 até 50 caracteres.")
 	@Column(name = "fab_pais", length = 50, nullable = false)
 	private String pais;
-	
-	@NotNull(message ="O campo Data de Início de contrato é obrigatório")
+
+	@NotNull(message = "O campo Data de Início de contrato é obrigatório")
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "fab_iniciocontrato", nullable = false)
 	private Date iniciocontrato;
-	
-	@NotNull(message ="O campo Data de Final de contrato é obrigatório")
+
+	@NotNull(message = "O campo Data de Final de contrato é obrigatório")
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "fab_finalcontrato", nullable = false)
 	private Date finalcontrato;
@@ -132,8 +131,4 @@ public class Fabricante {
 			return false;
 		return true;
 	}
-
-	
-	
-
 }

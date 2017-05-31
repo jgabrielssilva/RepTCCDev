@@ -3,7 +3,6 @@ package br.com.sysbebidas.bean;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-
 import br.com.sysbebidas.dao.FabricanteDAO;
 import br.com.sysbebidas.domain.Fabricante;
 import br.com.sysbebidas.util.FacesUtil;
@@ -12,11 +11,11 @@ import br.com.sysbebidas.util.FacesUtil;
 @ViewScoped
 public class FabricanteBean {
 	private Fabricante fabricanteCadastro;
-	
+
 	private List<Fabricante> listaFabricantes;
-	
+
 	private List<Fabricante> listaFabricantesFiltrados;
-	
+
 	private String acao;
 	private Long codigo;
 
@@ -28,7 +27,6 @@ public class FabricanteBean {
 	public void setFabricanteCadastro(Fabricante fabricanteCadastro) {
 		this.fabricanteCadastro = fabricanteCadastro;
 	}
-	
 
 	public List<Fabricante> getListaFabricantes() {
 		return listaFabricantes;
@@ -38,7 +36,6 @@ public class FabricanteBean {
 		this.listaFabricantes = listaFabricantes;
 	}
 
-	
 	public List<Fabricante> getListaFabricantesFiltrados() {
 		return listaFabricantesFiltrados;
 	}
@@ -46,27 +43,23 @@ public class FabricanteBean {
 	public void setListaFabricantesFiltrados(List<Fabricante> listaFabricantesFiltrados) {
 		this.listaFabricantesFiltrados = listaFabricantesFiltrados;
 	}
-	
 
 	public String getAcao() {
 		return acao;
 	}
-	
+
 	public void setAcao(String acao) {
 		this.acao = acao;
 	}
-	
+
 	public Long getCodigo() {
 		return codigo;
 	}
-	
+
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-	
-	
-	
-	
+
 	public void novo() {
 		fabricanteCadastro = new Fabricante();
 	}
@@ -80,7 +73,7 @@ public class FabricanteBean {
 
 			FacesUtil.adicionarMsgInfo("Fabricante salvo com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar incluir fabricante:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar incluir fabricante" + ex.getMessage());
 		}
 	}
 
@@ -89,7 +82,7 @@ public class FabricanteBean {
 			FabricanteDAO fabricanteDAO = new FabricanteDAO();
 			listaFabricantes = fabricanteDAO.listar();
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar fabricantes:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar fabricantes" + ex.getMessage());
 		}
 	}
 
@@ -102,7 +95,7 @@ public class FabricanteBean {
 				fabricanteCadastro = new Fabricante();
 			}
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do fabricante:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do fabricante" + ex.getMessage());
 		}
 	}
 
@@ -113,7 +106,7 @@ public class FabricanteBean {
 
 			FacesUtil.adicionarMsgInfo("Fabricante removido com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar remover fabricante:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar remover fabricante" + ex.getMessage());
 		}
 	}
 
@@ -124,7 +117,7 @@ public class FabricanteBean {
 
 			FacesUtil.adicionarMsgInfo("Fabricante editado com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar editar fabricante:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar editar fabricante" + ex.getMessage());
 		}
 	}
 }

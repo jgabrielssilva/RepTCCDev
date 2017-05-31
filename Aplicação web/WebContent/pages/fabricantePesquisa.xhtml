@@ -28,41 +28,38 @@
 				value="#{fabricanteBean.listaFabricantes}"
 				filteredValue="#{fabricanteBean.listaFabricantesFiltrados}"
 				var="fabricante" paginator="true" rows="10">
-
 				<f:facet name="footer">
 					<p:button value="Novo" outcome="/pages/fabricanteCadastro.xhtml">
 						<f:param name="fabacao" value="Novo" />
 					</p:button>
 				</f:facet>
-
 				<p:column headerText="Código" style="width: 8%">
 					<h:outputText value="#{fabricante.codigo}" />
 				</p:column>
-
 				<p:column headerText="Descrição" filterBy="#{fabricante.descricao}"
 					sortBy="#{fabricante.descricao}">
 					<h:outputText value="#{fabricante.descricao}" />
 				</p:column>
-				
-								<p:column headerText="CNPJ" filterBy="#{fabricante.cnpj}"
+				<p:column headerText="CNPJ" filterBy="#{fabricante.cnpj}"
 					sortBy="#{fabricante.cnpj}">
 					<h:outputText value="#{fabricante.cnpj}" />
 				</p:column>
-				
-					<p:column headerText="País de Origem" filterBy="#{fabricante.pais}"
+				<p:column headerText="País de Origem" filterBy="#{fabricante.pais}"
 					sortBy="#{fabricante.pais}">
 					<h:outputText value="#{fabricante.pais}" />
 				</p:column>
-				
-				<p:column headerText="Início de contrato" style="width: 13%" sortBy="#{fabricante.iniciocontrato}" >
-					<h:outputText value="#{fabricante.iniciocontrato}" />
+				<p:column headerText="Início de contrato" style="width: 13%"
+					sortBy="#{fabricante.iniciocontrato}">
+					<h:outputText value="#{fabricante.iniciocontrato}">
+						<f:convertDateTime />
+					</h:outputText>
 				</p:column>
-				
-					<p:column headerText="Fim de contrato" style="width: 13%" sortBy="#{fabricante.finalcontrato}" >
-					<h:outputText value="#{fabricante.finalcontrato}" />
+				<p:column headerText="Fim de contrato" style="width: 13%"
+					sortBy="#{fabricante.finalcontrato}">
+					<h:outputText value="#{fabricante.finalcontrato}">
+						<f:convertDateTime />
+					</h:outputText>
 				</p:column>
-				
-				
 				<p:column headerText="Opções" style="width: 13%">
 					<p:button value="Excluir" outcome="/pages/fabricanteCadastro.xhtml">
 						<f:param name="fabacao" value="Excluir" />
@@ -73,7 +70,6 @@
 						<f:param name="fabcodigo" value="#{fabricante.codigo}" />
 					</p:button>
 				</p:column>
-
 			</p:dataTable>
 		</h:form>
 	</ui:define>
