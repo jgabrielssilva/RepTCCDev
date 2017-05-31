@@ -26,39 +26,31 @@
 
 			<p:dataTable emptyMessage="Nenhum registro encontrado."
 				value="#{cargoBean.listaCargos}"
-				filteredValue="#{cargoBean.listaCargosFiltrados}"
-				var="cargo" paginator="true" rows="10">
-
+				filteredValue="#{cargoBean.listaCargosFiltrados}" var="cargo"
+				paginator="true" rows="10">
 				<f:facet name="footer">
 					<p:button value="Novo" outcome="/pages/cargoCadastro.xhtml">
 						<f:param name="caracao" value="Novo" />
 					</p:button>
 				</f:facet>
-
 				<p:column headerText="Código" style="width: 8%">
 					<h:outputText value="#{cargo.codigo}" />
 				</p:column>
-
 				<p:column headerText="Descrição" filterBy="#{cargo.descricao}"
 					sortBy="#{cargo.descricao}">
 					<h:outputText value="#{cargo.descricao}" />
 				</p:column>
-				
-				<p:column headerText="Piso Salarial" style="width: 10%" filterBy="#{cargo.pisosalarial}"
-					sortBy="#{cargo.pisosalarial}">
+				<p:column headerText="Piso Salarial" style="width: 10%"
+					filterBy="#{cargo.pisosalarial}" sortBy="#{cargo.pisosalarial}">
 					<h:outputText value="#{cargo.pisosalarial}">
-										<f:convertNumber pattern="0.00" />
-				</h:outputText>
+						<f:convertNumber pattern="0.00" />
+					</h:outputText>
 				</p:column>
-				
-				<p:column headerText="Departamento" 
-				filterBy="#{cargo.departamento.descricao}" 
-				sortBy="#{cargo.departamento.descricao}" >
+				<p:column headerText="Departamento"
+					filterBy="#{cargo.departamento.descricao}"
+					sortBy="#{cargo.departamento.descricao}">
 					<h:outputText value="#{cargo.departamento.descricao}" />
 				</p:column>
-
-				
-				
 				<p:column headerText="Opções" style="width: 13%">
 					<p:button value="Excluir" outcome="/pages/cargoCadastro.xhtml">
 						<f:param name="caracao" value="Excluir" />
@@ -69,7 +61,6 @@
 						<f:param name="carcodigo" value="#{cargo.codigo}" />
 					</p:button>
 				</p:column>
-
 			</p:dataTable>
 		</h:form>
 	</ui:define>

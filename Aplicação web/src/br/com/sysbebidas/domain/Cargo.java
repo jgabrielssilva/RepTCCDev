@@ -21,7 +21,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name = "tbl_cargos")
 @NamedQueries({ @NamedQuery(name = "Cargo.listar", query = "SELECT cargo FROM Cargo cargo"),
-	@NamedQuery(name = "Cargo.buscarPorCodigo", query = "SELECT cargo FROM Cargo cargo WHERE cargo.codigo = :codigo") })
+		@NamedQuery(name = "Cargo.buscarPorCodigo", query = "SELECT cargo FROM Cargo cargo WHERE cargo.codigo = :codigo") })
 public class Cargo {
 
 	@Id
@@ -33,10 +33,10 @@ public class Cargo {
 	@Size(min = 2, max = 50, message = "Tamanho de caracteres não respeitado. Aceito de 02 até 50 caracteres.")
 	@Column(name = "car_descricao", length = 50, nullable = false)
 	private String descricao;
-	
+
 	@NotNull(message = "O campo Piso salarial é obrigatório")
-	@DecimalMin(value ="0.00", message = "Informe um valor maior ou igual a 0(zero) para o campo Piso salarial")
-	@DecimalMax(value ="99999.99", message ="Informe um valor menor que 100.000(cem mil) para o campo Piso salarial")
+	@DecimalMin(value = "0.00", message = "Informe um valor maior ou igual a 0(zero) para o campo Piso salarial")
+	@DecimalMax(value = "99999.99", message = "Informe um valor menor que 100.000(cem mil) para o campo Piso salarial")
 	@Column(name = "car_pisosalarial", precision = 7, scale = 2, nullable = false)
 	private BigDecimal pisosalarial;
 
@@ -107,7 +107,4 @@ public class Cargo {
 			return false;
 		return true;
 	}
-
-
-
 }

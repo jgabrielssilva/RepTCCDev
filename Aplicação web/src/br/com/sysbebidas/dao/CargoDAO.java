@@ -1,11 +1,9 @@
 package br.com.sysbebidas.dao;
 
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import br.com.sysbebidas.domain.Cargo;
 import br.com.sysbebidas.util.HibernateUtil;
 

@@ -85,7 +85,7 @@ public class CargoBean {
 
 			FacesUtil.adicionarMsgInfo("Cargo salvo com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar incluir cargo:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar incluir cargo" + ex.getMessage());
 		}
 	}
 
@@ -94,7 +94,7 @@ public class CargoBean {
 			CargoDAO cargoDAO = new CargoDAO();
 			listaCargos = cargoDAO.listar();
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar cargo:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar cargo" + ex.getMessage());
 		}
 	}
 
@@ -110,7 +110,7 @@ public class CargoBean {
 			DepartamentoDAO departamentoDAO = new DepartamentoDAO();
 			listaDepartamentos = departamentoDAO.listar();
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do cargo:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do cargo" + ex.getMessage());
 		}
 	}
 
@@ -121,7 +121,7 @@ public class CargoBean {
 
 			FacesUtil.adicionarMsgInfo("Cargo removido com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar remover cargo:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar remover cargo" + ex.getMessage());
 		}
 	}
 
@@ -132,7 +132,7 @@ public class CargoBean {
 
 			FacesUtil.adicionarMsgInfo("Cargo editado com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar editar cargo:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar editar cargo" + ex.getMessage());
 		}
 	}
 }

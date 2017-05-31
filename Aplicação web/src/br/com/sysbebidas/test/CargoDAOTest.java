@@ -3,23 +3,21 @@ package br.com.sysbebidas.test;
 import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
-
 import br.com.sysbebidas.dao.CargoDAO;
 import br.com.sysbebidas.dao.DepartamentoDAO;
 import br.com.sysbebidas.domain.Cargo;
 import br.com.sysbebidas.domain.Departamento;
 
 public class CargoDAOTest {
-	
-	@Test
-    @Ignore
 
+	@Test
+	@Ignore
 	public void salvar() {
 		DepartamentoDAO departamentoDAO = new DepartamentoDAO();
-		Departamento departamento = departamentoDAO.buscarPorCodigo(3L);
+		Departamento departamento = departamentoDAO.buscarPorCodigo(1L);
 
 		Cargo cargo = new Cargo();
-		cargo.setDescricao("Balconista");
+		cargo.setDescricao("TesteCargoSalvar");
 		cargo.setDepartamento(departamento);
 
 		CargoDAO cargoDAO = new CargoDAO();
@@ -30,7 +28,7 @@ public class CargoDAOTest {
 	@Ignore
 	public void buscarPorCodigo() {
 		CargoDAO cargoDAO = new CargoDAO();
-		Cargo cargo = cargoDAO.buscarPorCodigo(3L);
+		Cargo cargo = cargoDAO.buscarPorCodigo(1L);
 
 		System.out.println(cargo);
 	}
@@ -39,16 +37,16 @@ public class CargoDAOTest {
 	@Ignore
 	public void listar() {
 		CargoDAO cargoDAO = new CargoDAO();
-		List<Cargo> cargos = cargoDAO.listar();
+		List<Cargo> listacargos = cargoDAO.listar();
 
-		System.out.println(cargos);
+		System.out.println(listacargos);
 	}
 
 	@Test
 	@Ignore
 	public void excluir() {
 		CargoDAO cargoDAO = new CargoDAO();
-		Cargo cargo = cargoDAO.buscarPorCodigo(6L);
+		Cargo cargo = cargoDAO.buscarPorCodigo(1L);
 
 		cargoDAO.excluir(cargo);
 	}
@@ -58,16 +56,14 @@ public class CargoDAOTest {
 	public void editar() {
 		CargoDAO cargoDAO = new CargoDAO();
 
-		Cargo cargo = cargoDAO.buscarPorCodigo(4L);
+		Cargo cargo = cargoDAO.buscarPorCodigo(1L);
 
-		cargo.setDescricao("TV");
-
+		cargo.setDescricao("TesteCargoEditar");
 
 		DepartamentoDAO departamentoDAO = new DepartamentoDAO();
-		Departamento departamento = departamentoDAO.buscarPorCodigo(9L);
+		Departamento departamento = departamentoDAO.buscarPorCodigo(1L);
 		cargo.setDepartamento(departamento);
 
 		cargoDAO.editar(cargo);
 	}
-
 }
