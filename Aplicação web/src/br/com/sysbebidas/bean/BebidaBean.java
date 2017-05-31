@@ -74,11 +74,11 @@ public class BebidaBean {
 	public void setListaFabricantes(List<Fabricante> listaFabricantes) {
 		this.listaFabricantes = listaFabricantes;
 	}
-	
+
 	public List<Categoria> getListaCategorias() {
 		return listaCategorias;
 	}
-	
+
 	public void setListaCategorias(List<Categoria> listaCategorias) {
 		this.listaCategorias = listaCategorias;
 	}
@@ -96,7 +96,7 @@ public class BebidaBean {
 
 			FacesUtil.adicionarMsgInfo("Bebida salvo com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar incluir bebida:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar incluir bebida" + ex.getMessage());
 		}
 	}
 
@@ -105,7 +105,7 @@ public class BebidaBean {
 			BebidaDAO bebidaDAO = new BebidaDAO();
 			listaBebidas = bebidaDAO.listar();
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar bebida:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar pesquisar bebida" + ex.getMessage());
 		}
 	}
 
@@ -120,11 +120,11 @@ public class BebidaBean {
 
 			FabricanteDAO fabricanteDAO = new FabricanteDAO();
 			listaFabricantes = fabricanteDAO.listar();
-			
+
 			CategoriaDAO categoriaDAO = new CategoriaDAO();
 			listaCategorias = categoriaDAO.listar();
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do bebida:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar obter dados do bebida" + ex.getMessage());
 		}
 	}
 
@@ -135,7 +135,7 @@ public class BebidaBean {
 
 			FacesUtil.adicionarMsgInfo("Bebida removido com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar remover bebida:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar remover bebida" + ex.getMessage());
 		}
 	}
 
@@ -146,7 +146,7 @@ public class BebidaBean {
 
 			FacesUtil.adicionarMsgInfo("Bebida editado com sucessso");
 		} catch (RuntimeException ex) {
-			FacesUtil.adicionarMsgErro("Erro ao tentar editar bebida:" + ex.getMessage());
+			FacesUtil.adicionarMsgErro("Erro ao tentar editar bebida" + ex.getMessage());
 		}
 	}
 }

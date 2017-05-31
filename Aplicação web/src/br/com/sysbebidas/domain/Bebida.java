@@ -1,7 +1,6 @@
 package br.com.sysbebidas.domain;
 
 import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,9 +18,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.NotEmpty;
-
 
 @Entity
 @Table(name = "tbl_bebidas")
@@ -34,20 +31,20 @@ public class Bebida {
 	@Column(name = "beb_codigo")
 	private Long codigo;
 
-	@NotEmpty(message ="O campo Descrição é obrigatório")
+	@NotEmpty(message = "O campo Descrição é obrigatório")
 	@Column(name = "beb_descricao", length = 50, nullable = false)
 	private String descricao;
 
 	@NotNull(message = "O campo preço é obrigatório")
-	@DecimalMin(value ="0.00", message = "Informe um valor maior ou igual a 0(zero) para o campo Preço")
-	@DecimalMax(value ="99999.99", message ="Informe um valor menor que 100.000(cem mil) para o campo Preço")
-	@Digits(integer = 5, fraction = 2, message ="Informe um valor válido para o campo preço")
+	@DecimalMin(value = "0.00", message = "Informe um valor maior ou igual a 0(zero) para o campo Preço")
+	@DecimalMax(value = "99999.99", message = "Informe um valor menor que 100.000(cem mil) para o campo Preço")
+	@Digits(integer = 5, fraction = 2, message = "Informe um valor válido para o campo preço")
 	@Column(name = "beb_preco", precision = 7, scale = 2, nullable = false)
 	private BigDecimal preco;
 
 	@NotNull(message = "O campo quantidade é obrigatório")
-	@Min(value = 0, message ="Informe um valor maior ou igual a zero para o campo quantidade")
-	@Max(value = 9999, message="Informe um valor menor que dez mil para o campo quantidade")
+	@Min(value = 0, message = "Informe um valor maior ou igual a zero para o campo quantidade")
+	@Max(value = 9999, message = "Informe um valor menor que dez mil para o campo quantidade")
 	@Column(name = "beb_quantidade", nullable = false)
 	private Integer quantidade;
 
@@ -55,7 +52,7 @@ public class Bebida {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tbl_categorias_cat_codigo", referencedColumnName = "cat_codigo", nullable = false)
 	private Categoria categoria;
-	
+
 	@NotNull(message = "O campo fabricante é obrigatório")
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tbl_fabricantes_fab_codigo", referencedColumnName = "fab_codigo", nullable = false)
@@ -92,14 +89,14 @@ public class Bebida {
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
-	
+
 	public Categoria getCategoria() {
 		return categoria;
 	}
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}	
+	}
 
 	public Fabricante getFabricante() {
 		return fabricante;
@@ -138,8 +135,5 @@ public class Bebida {
 		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
-	}	
-	
-	
-	
+	}
 }

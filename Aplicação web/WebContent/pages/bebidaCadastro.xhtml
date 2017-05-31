@@ -13,12 +13,13 @@
 		<f:metadata>
 			<f:viewParam name="bebacao" value="#{bebidaBean.acao}" />
 			<f:viewParam name="bebcodigo" value="#{bebidaBean.codigo}" />
-			<f:event listener="#{bebidaBean.carregarCadastro}" type="preRenderView" />
+			<f:event listener="#{bebidaBean.carregarCadastro}"
+				type="preRenderView" />
 		</f:metadata>
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<h:form id="FormInBD">
+		<h:form id="FormularioBebida">
 
 			<p:toolbar>
 				<f:facet name="left">
@@ -26,73 +27,105 @@
 				</f:facet>
 			</p:toolbar>
 
-			<h:panelGrid id="PnInBD" columns="2">
+			<h:panelGrid id="PainelBebida" columns="2">
 				<p:outputLabel value="Código:" />
 				<p:inputText size="15" readonly="true"
 					value="#{bebidaBean.bebidaCadastro.codigo}" />
-
 				<p:outputLabel value="Descrição:" />
 				<p:inputText maxlength="50" size="15"
 					value="#{bebidaBean.bebidaCadastro.descricao}"
 					readonly="#{bebidaBean.acao == 'Excluir'}">
 					<f:validateBean />
 				</p:inputText>
-				
 				<p:outputLabel value="Preço:" />
-				<p:inputText size="15"
-					value="#{bebidaBean.bebidaCadastro.preco}"
+				<p:inputText size="15" value="#{bebidaBean.bebidaCadastro.preco}"
 					readonly="#{bebidaBean.acao == 'Excluir'}">
 					<f:validateBean />
 					<f:convertNumber />
 				</p:inputText>
-				
-								<p:outputLabel value="Quantidade:" />
+				<p:outputLabel value="Quantidade:" />
 				<p:inputText size="15"
 					value="#{bebidaBean.bebidaCadastro.quantidade}"
 					readonly="#{bebidaBean.acao == 'Excluir'}">
 					<f:validateBean />
 				</p:inputText>
-				
 				<p:outputLabel value="Categoria:" />
-				<p:selectOneMenu value="#{bebidaBean.bebidaCadastro.categoria}" 
-				converter="categoriaConverter" disabled="#{bebidaBean.acao == 'Excluir'}" >
-				<f:selectItem itemValue="" itemLabel="Selecione a categoria" />
-				<f:selectItems value="#{bebidaBean.listaCategorias}"
-				var="categoria" itemValue="#{categoria}" itemLabel="#{categoria.descricao}" />
-				<f:validateBean />
+				<p:selectOneMenu value="#{bebidaBean.bebidaCadastro.categoria}"
+					converter="categoriaConverter"
+					disabled="#{bebidaBean.acao == 'Excluir'}">
+					<f:selectItem itemValue="" itemLabel="Selecione a categoria" />
+					<f:selectItems value="#{bebidaBean.listaCategorias}"
+						var="categoria" itemValue="#{categoria}"
+						itemLabel="#{categoria.descricao}" />
+					<f:validateBean />
 				</p:selectOneMenu>
-				
 				<p:outputLabel value="Fabricante:" />
-				<p:selectOneMenu value="#{bebidaBean.bebidaCadastro.fabricante}" 
-				converter="fabricanteConverter" disabled="#{bebidaBean.acao == 'Excluir'}">
-				<f:selectItem itemValue="" itemLabel="Selecione o fabricante" />
-				<f:selectItems value="#{bebidaBean.listaFabricantes}"
-				var="fabricante" itemValue="#{fabricante}" itemLabel="#{fabricante.descricao}" />
-				<f:validateBean />
+				<p:selectOneMenu value="#{bebidaBean.bebidaCadastro.fabricante}"
+					converter="fabricanteConverter"
+					disabled="#{bebidaBean.acao == 'Excluir'}">
+					<f:selectItem itemValue="" itemLabel="Selecione o fabricante" />
+					<f:selectItems value="#{bebidaBean.listaFabricantes}"
+						var="fabricante" itemValue="#{fabricante}"
+						itemLabel="#{fabricante.descricao}" />
+					<f:validateBean />
 				</p:selectOneMenu>
-				
 			</h:panelGrid>
 
 			<h:panelGrid columns="5">
-				<p:commandButton value="Novo"
-					actionListener="#{bebidaBean.novo}" update=":FormInBD:PnInBD"
-					rendered="#{bebidaBean.acao == 'Novo'}" />
-
+				<p:commandButton value="Limpar" actionListener="#{bebidaBean.novo}"
+					update=":FormularioBebida:PainelBebida"
+					rendered="#{bebidaBean.acao == 'Novo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Pessoal' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'pessoal'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'RH'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'rh'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:commandButton value="Salvar"
 					actionListener="#{bebidaBean.salvar}"
-					update=":msgGlobal :FormInBD:PnInBD"
-					rendered="#{bebidaBean.acao == 'Novo'}" />
-
+					update=":msgGlobal :FormularioBebida:PainelBebida"
+					rendered="#{bebidaBean.acao == 'Novo'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Pessoal' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'pessoal'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'RH'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'rh'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:commandButton value="Excluir"
 					actionListener="#{bebidaBean.excluir}" update=":msgGlobal"
-					rendered="#{bebidaBean.acao == 'Excluir'}" />
-
+					rendered="#{bebidaBean.acao == 'Excluir'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Pessoal' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'pessoal'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'RH'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'rh'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:commandButton value="Editar"
 					actionListener="#{bebidaBean.editar}" update=":msgGlobal"
-					rendered="#{bebidaBean.acao == 'Editar'}" />
-
+					rendered="#{bebidaBean.acao == 'Editar'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'PESSOAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Pessoal' 
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'pessoal'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'RH'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'rh'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OPERACIONAL'
+					and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'Operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'operacional'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'OP'
+				    and autenticacaoBean.funcionarioLogado.cargo.departamento.descricao != 'op'}" />
 				<p:button value="Voltar" outcome="/pages/bebidaPesquisa.xhtml" />
-
 			</h:panelGrid>
 		</h:form>
 	</ui:define>

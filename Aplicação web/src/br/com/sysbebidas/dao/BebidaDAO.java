@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import br.com.sysbebidas.domain.Bebida;
 import br.com.sysbebidas.util.HibernateUtil;
 

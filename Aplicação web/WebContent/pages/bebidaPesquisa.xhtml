@@ -26,47 +26,40 @@
 
 			<p:dataTable emptyMessage="Nenhum registro encontrado."
 				value="#{bebidaBean.listaBebidas}"
-				filteredValue="#{bebidaBean.listaBebidasFiltrados}"
-				var="bebida" paginator="true" rows="10">
-
+				filteredValue="#{bebidaBean.listaBebidasFiltrados}" var="bebida"
+				paginator="true" rows="10">
 				<f:facet name="footer">
 					<p:button value="Novo" outcome="/pages/bebidaCadastro.xhtml">
 						<f:param name="bebacao" value="Novo" />
 					</p:button>
 				</f:facet>
-
 				<p:column headerText="Código" style="width: 8%">
 					<h:outputText value="#{bebida.codigo}" />
 				</p:column>
-
 				<p:column headerText="Descrição" filterBy="#{bebida.descricao}"
 					sortBy="#{bebida.descricao}">
 					<h:outputText value="#{bebida.descricao}" />
 				</p:column>
-				
-				<p:column headerText="Preço" style="width: 10%" sortBy="#{bebida.preco}">
-					<h:outputText value="#{bebida.preco}" >
-					<f:convertNumber pattern="0.00" />
+				<p:column headerText="Preço" style="width: 10%"
+					sortBy="#{bebida.preco}">
+					<h:outputText value="#{bebida.preco}">
+						<f:convertNumber pattern="0.00" />
 					</h:outputText>
 				</p:column>
-				
 				<p:column headerText="Quantidade" style="width: 10%">
 					<h:outputText value="#{bebida.quantidade}" />
 				</p:column>
-				
 				<p:column headerText="Categoria" style="width: 10%"
-				filterBy="#{bebida.categoria.descricao}" 
-				sortBy="#{bebida.categoria.descricao}" >
+					filterBy="#{bebida.categoria.descricao}"
+					sortBy="#{bebida.categoria.descricao}">
 					<h:outputText value="#{bebida.categoria.descricao}" />
 				</p:column>
-				
-				<p:column headerText="Fabricante"  style="width: 15%"
-				filterBy="#{bebida.fabricante.descricao}" 
-				sortBy="#{bebida.fabricante.descricao}" >
+				<p:column headerText="Fabricante" style="width: 15%"
+					filterBy="#{bebida.fabricante.descricao}"
+					sortBy="#{bebida.fabricante.descricao}">
 					<h:outputText value="#{bebida.fabricante.descricao}" />
 				</p:column>
-				
-				<p:column headerText="Opções" style="width: 13%" >
+				<p:column headerText="Opções" style="width: 13%">
 					<p:button value="Excluir" outcome="/pages/bebidaCadastro.xhtml">
 						<f:param name="bebacao" value="Excluir" />
 						<f:param name="bebcodigo" value="#{bebida.codigo}" />
@@ -76,7 +69,6 @@
 						<f:param name="bebcodigo" value="#{bebida.codigo}" />
 					</p:button>
 				</p:column>
-
 			</p:dataTable>
 		</h:form>
 	</ui:define>
