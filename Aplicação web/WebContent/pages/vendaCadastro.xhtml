@@ -10,157 +10,133 @@
 <ui:composition template="/templates/modeloGeral.xhtml">
 
 	<ui:define name="metadata">
-	<f:metadata>
-	<f:event listener="#{vendaBean.carregarBebidas}" 
-	type="preRenderView" />
-	</f:metadata>
+		<f:metadata>
+			<f:event listener="#{vendaBean.carregarBebidas}" type="preRenderView" />
+		</f:metadata>
 	</ui:define>
-	
+
 	<ui:define name="conteudo">
- <h:form id="FormInVenda" >
+		<h:form id="FormularioVenda">
+
 			<p:toolbar>
 				<f:facet name="left">
-					<h:outputText value=" ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤ ㅤVendas" />
+					<h:outputText value="Vendas" />
 				</f:facet>
-							</p:toolbar>
-							<p:separator/>
-				<p:dataTable id="TblItens1" emptyMessage="Nenhum registro encontrado."
+			</p:toolbar>
+			<p:separator />
+
+			<p:dataTable id="TabelaVenda1"
+				emptyMessage="Nenhum registro encontrado."
 				value="#{vendaBean.listaBebidas}"
-				filteredValue="#{vendaBean.listaBebidasFiltrados}"
-				var="bebida" paginator="true" rows="4">
-
-
-
+				filteredValue="#{vendaBean.listaBebidasFiltrados}" var="bebida"
+				paginator="true" rows="4">
 				<p:column headerText="Código" style="width: 8%">
 					<h:outputText value="#{bebida.codigo}" />
 				</p:column>
-
-				<p:column headerText="Descrição" filterBy="#{bebida.descricao}"
+				<p:column headerText="Bebida" filterBy="#{bebida.descricao}"
 					sortBy="#{bebida.descricao}">
 					<h:outputText value="#{bebida.descricao}" />
 				</p:column>
-				
-				<p:column headerText="Preço" style="width: 10%" sortBy="#{bebida.preco}">
+				<p:column headerText="Preço" style="width: 10%"
+					sortBy="#{bebida.preco}">
 					<h:outputText value="#{bebida.preco}">
-										<f:convertNumber pattern="0.00" />
+						<f:convertNumber pattern="0.00" />
 					</h:outputText>
 				</p:column>
-				
 				<p:column headerText="Quantidade" style="width: 10%">
 					<h:outputText value="#{bebida.quantidade}" />
 				</p:column>
-				
 				<p:column headerText="Categoria" style="width: 10%"
-				filterBy="#{bebida.categoria.descricao}" 
-				sortBy="#{bebida.categoria.descricao}" >
+					filterBy="#{bebida.categoria.descricao}"
+					sortBy="#{bebida.categoria.descricao}">
 					<h:outputText value="#{bebida.categoria.descricao}" />
 				</p:column>
-				
 				<p:column headerText="Fabricante" style="width: 15%"
-				filterBy="#{bebida.fabricante.descricao}" 
-				sortBy="#{bebida.fabricante.descricao}" >
+					filterBy="#{bebida.fabricante.descricao}"
+					sortBy="#{bebida.fabricante.descricao}">
 					<h:outputText value="#{bebida.fabricante.descricao}" />
 				</p:column>
-				
-				<p:column headerText="Opções" style="width: 9%" >
-				<p:commandButton value="Adicionar" 
-				actionListener="#{vendaBean.adicionar(bebida)}" 
-				update=":FormInVenda:TblItens2 :FormInVenda:TxtValorTotal"  />
-				
+				<p:column headerText="Opções" style="width: 9%">
+					<p:commandButton value="Adicionar"
+						actionListener="#{vendaBean.adicionar(bebida)}"
+						update=":FormularioVenda:TabelaVenda2 :FormularioVenda:TextoSaidaValorTotal" />
 				</p:column>
-
 			</p:dataTable>
-			
-			<p:separator/>
-			
-	
-			
-	<p:dataTable id="TblItens2" emptyMessage="Nenhum registro encontrado."
-                 value="#{vendaBean.listaItens}" 
-                 var="item" paginator="true" rows="4">
 
-				<p:column headerText="Bebida" >
+			<p:separator />
+			<p:dataTable id="TabelaVenda2"
+				emptyMessage="Nenhum registro encontrado."
+				value="#{vendaBean.listaItens}" var="item" paginator="true" rows="4">
+				<p:column headerText="Item">
 					<h:outputText value="#{item.bebida.descricao}" />
 				</p:column>
-
-				<p:column headerText="Categoria" style="width: 10%" >
+				<p:column headerText="Categoria" style="width: 10%">
 					<h:outputText value="#{item.bebida.categoria.descricao}" />
 				</p:column>
-				
-								<p:column headerText="Fabricante" style="width: 15%" >
+				<p:column headerText="Fabricante" style="width: 15%">
 					<h:outputText value="#{item.bebida.fabricante.descricao}" />
 				</p:column>
-				
-				
-				
 				<p:column headerText="Quantidade" style="width: 10%">
 					<h:outputText value="#{item.quantidade}" />
 				</p:column>
-				
-				<p:column headerText="Valor Parcial" style="width: 10%" >
+				<p:column headerText="Valor Parcial" style="width: 10%">
 					<h:outputText value="#{item.valor}">
-										<f:convertNumber pattern="0.00"/>
+						<f:convertNumber pattern="0.00" />
 					</h:outputText>
 				</p:column>
-				
-				
-				<p:column headerText="Opções" style="width: 9%" >
-				<p:commandButton value="Remover"
-				actionListener="#{vendaBean.remover(item)}" 
-				update=":FormInVenda:TblItens2 :FormInVenda:TxtValorTotal" /> 
+				<p:column headerText="Opções" style="width: 9%">
+					<p:commandButton value="Remover"
+						actionListener="#{vendaBean.remover(item)}"
+						update=":FormularioVenda:TabelaVenda2 :FormularioVenda:TextoSaidaValorTotal" />
 				</p:column>
 			</p:dataTable>
 
-	<p:separator />
+			<p:separator />
 			<h:panelGrid columns="3">
 				<h:outputText value=" Valor Toral:" />
-				<h:outputText id="TxtValorTotal"
+				<h:outputText id="TextoSaidaValorTotal"
 					value="#{vendaBean.vendaCadastro.valor}">
-					<f:convertNumber pattern="0.00"/>
+					<f:convertNumber pattern="0.00" />
 				</h:outputText>
 				<p:commandButton value="Finalizar Venda"
 					actionListener="#{vendaBean.carregarDadosVenda}"
-					oncomplete="PF('wvDlgInVenda').show();" update=":Form3:TblItens3" />
+					oncomplete="PF('wvDlgInVenda').show();"
+					update=":FormularioFinalizaVenda:TabelaVenda3" />
 			</h:panelGrid>
 		</h:form>
 
+		<p:dialog  modal="true" resizable="false" header="Dados da Venda" widgetVar="wvDlgInVenda"
+			appendTo="@(body)">
 
-		<p:dialog closable="true" draggable="true" modal="true" 
-		resizable="false" header="Dados da Venda"
-			widgetVar="wvDlgInVenda" appendTo="@(body)">
-			
-			<h:form id="Form3">
-			<h:panelGrid id="TblItens3" columns="2" >
-			<h:outputText value="Horário:" />
-			
-			<h:outputText value="#{vendaBean.vendaCadastro.horario}" >
-			<f:convertDateTime pattern="dd/MM/yyy HH:mm"
-			timeZone="America/Recife"/>
-			</h:outputText>
-			
-			
-			<h:outputText value="Funcionário:" />
-			<h:outputText value="#{vendaBean.vendaCadastro.funcionario.nome}" />
-			
-			<h:outputText value="Valor Total:" />
-			<h:outputText value="#{vendaBean.vendaCadastro.valor}">
-								<f:convertNumber pattern="0.00" />
+			<h:form id="FormularioFinalizaVenda">
+
+				<h:panelGrid id="TabelaVenda3" columns="2">
+					<h:outputText value="Data:" />
+					<h:outputText value="#{vendaBean.vendaCadastro.horario}">
+						<f:convertDateTime pattern="dd/MM/yyy" />
 					</h:outputText>
-			</h:panelGrid>
-			
-			<h:panelGrid columns="2">
-			<p:commandButton value="Salvar" 
-			actionListener="#{vendaBean.salvar}"
-			update=":msgGlobal :FormInVenda:TblItens2  :FormInVenda:TblItens1 :FormInVenda:TxtValorTotal"
-			oncomplete="PF('wvDlgInVenda').hide();"/>
-			
-			<p:commandButton value="Voltar" 
-			onclick="PF('wvDlgInVenda').hide();" />
-			</h:panelGrid>
-			
+					<h:outputText value="Horário:" />
+					<h:outputText value="#{vendaBean.vendaCadastro.horario}">
+						<f:convertDateTime pattern="HH:mm" timeZone="America/Recife" />
+					</h:outputText>
+					<h:outputText value="Funcionário:" />
+					<h:outputText value="#{vendaBean.vendaCadastro.funcionario.nome}" />
+					<h:outputText value="Valor Total:" />
+					<h:outputText value="#{vendaBean.vendaCadastro.valor}">
+						<f:convertNumber pattern="0.00" />
+					</h:outputText>
+				</h:panelGrid>
+
+				<h:panelGrid columns="2">
+					<p:commandButton value="Salvar"
+						actionListener="#{vendaBean.salvar}"
+						update=":msgGlobal :FormularioVenda:TabelaVenda1  :FormularioVenda:TabelaVenda2 :FormularioVenda:TextoSaidaValorTotal"
+						oncomplete="PF('wvDlgInVenda').hide();" />
+					<p:commandButton value="Voltar"
+						onclick="PF('wvDlgInVenda').hide();" />
+				</h:panelGrid>
 			</h:form>
 		</p:dialog>
-
 	</ui:define>
 </ui:composition>
 </html>

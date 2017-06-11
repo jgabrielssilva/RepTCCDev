@@ -1,7 +1,6 @@
 package br.com.sysbebidas.dao;
 
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -14,33 +13,28 @@ import br.com.sysbebidas.util.HibernateUtil;
 
 public class VendaDAO {
 
-	public Long salvar(Venda venda, List<Item> itens) {
+	public void salvar(Venda venda, List<Item> itens) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
-
-		Long codigo = null;
-		
 		try {
 			transacao = sessao.beginTransaction();
-			codigo = (Long) sessao.save(venda);
-			
-			for(int posicao = 0; posicao < itens.size(); posicao++){
+			sessao.save(venda);
+
+			for (int posicao = 0; posicao < itens.size(); posicao++) {
 				Item item = itens.get(posicao);
 				item.setVenda(venda);
-				
+
 				sessao.save(item);
-				
+
 				Bebida bebida = item.getBebida();
 				int quantidade = bebida.getQuantidade() - item.getQuantidade();
-				if(quantidade >= 0){
+				if (quantidade >= 0) {
 					bebida.setQuantidade(quantidade);
 					sessao.update(bebida);
-				} else{
+				} else {
 					throw new RuntimeException(" Quantidade insuficiente em estoque");
-				}	
-			     
+				}
 			}
-			
 			transacao.commit();
 		} catch (RuntimeException ex) {
 			if (transacao != null) {
@@ -50,7 +44,6 @@ public class VendaDAO {
 		} finally {
 			sessao.close();
 		}
-		return codigo;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -121,28 +114,28 @@ public class VendaDAO {
 			sessao.close();
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Venda> buscar(VendaFilter filtro) {
+	public List<Venda> pesquisar(VendaFilter filtro) {
 		List<Venda> vendas = null;
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT venda FROM Venda venda ");
-		
-		if(filtro.getDataInicial() != null && filtro.getDataFinal() != null){
+
+		if (filtro.getDataInicial() != null && filtro.getDataFinal() != null) {
 			sql.append("WHERE venda.horario BETWEEN :dataInicial AND :dataFinal ");
 		}
-		
+
 		sql.append("ORDER BY venda.horario ");
-		
+
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		try {
-			Query consulta = sessao.createQuery(sql.toString()); 
+			Query consulta = sessao.createQuery(sql.toString());
 			if (filtro.getDataInicial() != null && filtro.getDataFinal() != null) {
 				consulta.setDate("dataInicial", filtro.getDataInicial());
 				consulta.setDate("dataFinal", filtro.getDataFinal());
 			}
-			
+
 			vendas = consulta.list();
 		} catch (RuntimeException ex) {
 			throw ex;
@@ -152,4 +145,3 @@ public class VendaDAO {
 		return vendas;
 	}
 }
-

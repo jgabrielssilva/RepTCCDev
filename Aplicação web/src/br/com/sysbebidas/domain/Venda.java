@@ -2,7 +2,6 @@ package br.com.sysbebidas.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,11 +16,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 @Table(name = "tbl_vendas")
 @NamedQueries({ @NamedQuery(name = "Venda.listar", query = "SELECT venda FROM Venda venda"),
-	@NamedQuery(name = "Venda.buscarPorCodigo", query = "SELECT venda FROM Venda venda WHERE codigo = :codigo") })
+		@NamedQuery(name = "Venda.buscarPorCodigo", query = "SELECT venda FROM Venda venda WHERE codigo = :codigo") })
 public class Venda {
 
 	@Id
@@ -103,7 +101,4 @@ public class Venda {
 			return false;
 		return true;
 	}
-
-	
-	
 }
