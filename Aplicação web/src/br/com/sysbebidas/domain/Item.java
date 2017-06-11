@@ -1,7 +1,6 @@
 package br.com.sysbebidas.domain;
 
 import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_itens")
 @NamedQueries({ @NamedQuery(name = "Item.listar", query = "SELECT item FROM Item item"),
-	@NamedQuery(name = "Item.buscarPorCodigo", query = "SELECT item FROM Item item WHERE codigo = :codigo") })
+		@NamedQuery(name = "Item.buscarPorCodigo", query = "SELECT item FROM Item item WHERE codigo = :codigo") })
 public class Item {
 
 	@Id
@@ -109,9 +108,4 @@ public class Item {
 			return false;
 		return true;
 	}
-
-  
-	
-	
-
 }

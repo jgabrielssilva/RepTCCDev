@@ -4,12 +4,11 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import br.com.sysbebidas.domain.Item;
 import br.com.sysbebidas.util.HibernateUtil;
 
 public class ItemDAO {
-	
+
 	public void salvar(Item item) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
@@ -27,7 +26,7 @@ public class ItemDAO {
 			sessao.close();
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Item> listar() {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
@@ -60,7 +59,7 @@ public class ItemDAO {
 		}
 		return item;
 	}
-	
+
 	public void excluir(Item item) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
@@ -78,7 +77,7 @@ public class ItemDAO {
 			sessao.close();
 		}
 	}
-	
+
 	public void editar(Item item) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
